@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>MASARAP-NIKE</Machine>
+    <WindowsUser>admin</WindowsUser>
+    <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <RegisteredManifestChecksum>2469429AEA95BCAB4FFBFD499DD110D0C4CEDCEC2D7E21D1DCEEA16454833C3B</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>5dc26822-6f8b-4fed-b5f3-9ae860c1a3c7_1.0.0.0_neutral__kwmcxzszfer2y</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>5dc26822-6f8b-4fed-b5f3-9ae860c1a3c7_kwmcxzszfer2y!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>5dc26822-6f8b-4fed-b5f3-9ae860c1a3c7</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=admin</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\admin\Documents\GitHub\Union2\Union2\bin\Debug\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-05-25T20:59:28.335</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\css\default.css">
+      <PackagePath>css\default.css</PackagePath>
+      <Modified>2013-05-25T20:05:19.338</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\pages\gameboard\gameboard.css">
+      <PackagePath>pages\gameboard\gameboard.css</PackagePath>
+      <Modified>2013-05-25T21:00:25.851</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\pages\home\home.css">
+      <PackagePath>pages\home\home.css</PackagePath>
+      <Modified>2013-05-25T20:50:36.997</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\pages\scoreboard\scoreboard.css">
+      <PackagePath>pages\scoreboard\scoreboard.css</PackagePath>
+      <Modified>2013-05-25T20:07:02.684</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\images\logo.png">
+      <PackagePath>images\logo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2012-07-26T19:30:08.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\images\smalllogo.png">
+      <PackagePath>images\smalllogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2012-07-26T19:30:08.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\images\splashscreen.png">
+      <PackagePath>images\splashscreen.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2012-07-26T19:30:08.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\images\storelogo.png">
+      <PackagePath>images\storelogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2012-07-26T19:30:08.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\images\theme1.png">
+      <PackagePath>images\theme1.png</PackagePath>
+      <Modified>2013-05-25T18:52:42.941</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\js\default.js">
+      <PackagePath>js\default.js</PackagePath>
+      <Modified>2013-05-25T20:05:19.322</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\js\navigator.js">
+      <PackagePath>js\navigator.js</PackagePath>
+      <Modified>2013-05-25T20:05:19.385</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\js\tile.js">
+      <PackagePath>js\tile.js</PackagePath>
+      <Modified>2013-05-25T20:50:03.657</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\lib\jquery-1.8.0.min.js">
+      <PackagePath>lib\jquery-1.8.0.min.js</PackagePath>
+      <Modified>2013-05-25T07:50:26.089</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\lib\jquery-2.0.1.min.js">
+      <PackagePath>lib\jquery-2.0.1.min.js</PackagePath>
+      <Modified>2013-05-25T18:52:43.004</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\pages\gameboard\gameboard.js">
+      <PackagePath>pages\gameboard\gameboard.js</PackagePath>
+      <Modified>2013-05-25T21:07:57.456</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\pages\home\home.js">
+      <PackagePath>pages\home\home.js</PackagePath>
+      <Modified>2013-05-25T20:19:02.899</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\pages\scoreboard\scoreboard.js">
+      <PackagePath>pages\scoreboard\scoreboard.js</PackagePath>
+      <Modified>2013-05-25T20:07:02.499</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\pages\gameboard\gameboard.html">
+      <PackagePath>pages\gameboard\gameboard.html</PackagePath>
+      <Modified>2013-05-25T20:57:57.632</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\pages\home\home.html">
+      <PackagePath>pages\home\home.html</PackagePath>
+      <Modified>2013-05-25T20:30:16.915</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\default.html">
+      <PackagePath>default.html</PackagePath>
+      <Modified>2013-05-25T20:57:03.831</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\pages\scoreboard\scoreboard.html">
+      <PackagePath>pages\scoreboard\scoreboard.html</PackagePath>
+      <Modified>2013-05-25T20:09:22.849</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\bin\Debug\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <Modified>2013-05-25T20:59:28.242</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.0\ExtensionSDKs\Microsoft.WinJS.1.0\1.0\">
+      <Name>Microsoft.WinJS.1.0</Name>
+      <Version>1.0.8514.0</Version>
+      <Architecture>Neutral</Architecture>
+      <FrameworkIdentity>Name=Microsoft.WinJS.1.0, MinVersion=1.0.8514.0</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.0\ExtensionSDKs\Microsoft.WinJS.1.0\1.0\Microsoft.WinJS.1.0.appx</AppxLocation>
+    </ResolvedSDKReference>
+  </ItemGroup>
+</Project>

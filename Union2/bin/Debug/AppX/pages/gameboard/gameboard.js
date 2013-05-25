@@ -17,10 +17,15 @@ var CURRENT_LEVEL = new Level();
             this.theme = new Theme("/images/theme1.png", 9/*numRows*/, 6/*numCols*/, 33, 56);
             this.counter = 0;
 
+            // The padding between tiles (in px)
+            var TILE_PADDING = 10;
+
             for (var i = 0; i < this.WIDTH; i++) {
                 for (var j = 0; j < this.HEIGHT; j++) {
-                    var tile = new Tile(this.counter++, i, j, this.theme);
+                    var tile = new Tile(this.counter++, this.theme);
                     var div = tile.CreateDiv();
+                    $(div).css("left", i * (this.theme.TileWidth + TILE_PADDING) + "px");
+                    $(div).css("top", j * (this.theme.TileHeight + TILE_PADDING) + "px");
                     CURRENT_LEVEL.GameBoard[div.id] = tile;
                 }
             }

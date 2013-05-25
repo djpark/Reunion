@@ -3,28 +3,23 @@
  * A class which represents a tile within the game.
  */
 
-// The padding between tiles (in px)
-var TILE_PADDING = 10;
+// A static int used to uniquely identify tiles.
+var s_numTiles = 0;
 
-// Used to generate the TileId string
-var numTiles = 0;
-
-var Tile = function (value, gridX, gridY, theme) {
+var Tile = function (value, theme) {
 
     value = value || 0;
 
     // The 'value' of this tile, corresponds to which image it shows when flipped.
-    this._value = value; // int
+    this._value = value;
 
     // The state of this tile
-    this._flipped = false; // bool
-
-    // The grid position of this tile.
-    this._gridX = gridX;
-    this._gridY = gridY;
+    this._flipped = false;
 
     // The url to the sprite sheet
     this._theme = theme;
+
+    this._tileId = s_numTiles++;
 };
 
 /**
@@ -34,19 +29,16 @@ Tile.prototype.CreateDiv = function()
 {
     var x = document.createElement("div");
 
-    var _self = this;
     $(x)
         .width(this._theme.Width + "px")
         .height(this._theme.Height + "px")
         .css("background-image", "url(" + this._theme.ImageUrl + ")")
         .css("background-position", this._theme.GetOffset(this._value))
-        .css("left", this._gridX * (this._theme.TileWidth + TILE_PADDING) + "px")
-        .css("top", this._gridY * (this._theme.TileHeight + TILE_PADDING) + "px")
         .css("width", this._theme.TileWidth + "px")
         .css("height", this._theme.TileHeight + "px")
         .css("position", "absolute")
         .appendTo("#gameContainer")
-        .attr("id", numTiles++)
+        .attr("id", this._tileId)
         .click(function () {
             CURRENT_LEVEL.OnClick(this.id);
         });
@@ -81,7 +73,6 @@ var Theme = function(url, numRows, numCols, tileWidth, tileHeight)
     // The height of a specific tile within this tile sheet.
     this.TileHeight = tileHeight;
 };
-
 
 // Returns a CSS string to offset the background-position
 // to show the 'val'th tile.

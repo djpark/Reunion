@@ -15,14 +15,27 @@ var Level = function () {
  * Takes in the ID of the tile which was most recently clicked.
  */
 Level.prototype.OnClick = function (tileId) {
+
+    // Flip it if we haven't flipped it yet.
+    if (this.SelectedTiles[tileId] == null)
+        this.GameBoard[tileId].Flip();
+
     // This makes an array of selected tiles, but if you clicked the same one twice it doesn't add it.
     this.SelectedTiles[tileId] = this.GameBoard[tileId];
-    this.SelectedTiles[tileId].Flip();
 
+    // Do we have a match?
     if (this.AreSelectedTilesSame()) {
+        // Mark all selected tiles as complete.
         for (var tileId in this.SelectedTiles) {
             this.SelectedTiles[tileId].Complete();
         }
+
+        // Clean out your current selection
+        this.SelectedTiles = new Array();
+
+        if (this.IsGameOver()) {
+            window.history.back();
+        };
     }
 };
 

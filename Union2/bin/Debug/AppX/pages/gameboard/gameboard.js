@@ -13,8 +13,8 @@ var CURRENT_LEVEL = new Level();
         ready: function (element, options) {
             // TODO: Initialize the page here.
             this.WIDTH = 10;
-            this.HEIGHT = 5;
-            this.theme = new Theme("/images/theme1.png", 9/*numRows*/, 6/*numCols*/, 33, 56);
+            this.HEIGHT = 6;
+            this.theme = new Theme("/images/theme1.png", 9/*numRows*/, 6/*numCols*/, 84, 104);
             this.counter = 0;
 
             // The padding between tiles (in px)

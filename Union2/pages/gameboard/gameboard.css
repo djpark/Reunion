@@ -2,6 +2,10 @@
     margin-left: 120px;
 }
 
+.tile {
+   	border-radius: 20px;
+}
+
 #gameContainer
 {
 	position:fixed;

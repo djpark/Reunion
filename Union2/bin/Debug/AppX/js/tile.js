@@ -19,6 +19,9 @@ var Tile = function (value, theme) {
     // The url to the sprite sheet
     this._theme = theme;
 
+    // This tile has been completed.
+    this._complete = false;
+
     this._tileId = s_numTiles++;
 };
 
@@ -33,11 +36,9 @@ Tile.prototype.CreateDiv = function()
         .width(this._theme.Width + "px")
         .height(this._theme.Height + "px")
         .css("background-image", "url(" + this._theme.ImageUrl + ")")
-        .css("background-position", this._theme.GetOffset(this._value))
         .css("width", this._theme.TileWidth + "px")
         .css("height", this._theme.TileHeight + "px")
         .css("position", "absolute")
-        .appendTo("#gameContainer")
         .attr("id", this._tileId)
         .click(function () {
             CURRENT_LEVEL.OnClick(this.id);
@@ -45,11 +46,17 @@ Tile.prototype.CreateDiv = function()
     return x;
 };
 
-Tile.prototype.OnClick = function (domElement) {
+Tile.prototype.Flip = function() {
+    this._flipped = !this._flipped;
+    if (this._flipped)
+        $("#" + this._tileId).css("background-position", this._theme.GetOffset(this._value));
+    else
+        $("#" + this._tileId).css("background-position", "0px 0px");
+};
 
-    $(domElement)
-    this._flipped = true;
-    
+Tile.prototype.Complete = function () {
+    this._complete = true;
+    $("#" + this._tileId).hide();
 };
 
 /**

@@ -16,39 +16,27 @@ var Level = function () {
  */
 Level.prototype.OnClick = function (tileId) {
     // This makes an array of selected tiles, but if you clicked the same one twice it doesn't add it.
-    this.SelectedTiles[tileId] = tileId;
+    this.SelectedTiles[tileId] = this.GameBoard[tileId];
+    this.SelectedTiles[tileId].Flip();
 
-    // This is the Tile associated with tileId
-    this.GameBoard[tileId];
+    if (this.AreSelectedTilesSame()) {
+        for (var tileId in this.SelectedTiles) {
+            this.SelectedTiles[tileId].Complete();
+        }
+    }
 };
 
 Level.prototype.AreSelectedTilesSame = function () {
-
-    // initialize shiet
-    var lastVal = null;
-    var counter = 0;
-
-    // go through the array
-    if (this.SelectedTiles.length > 1)
-    {
-        this.SelectedTiles.forEach(function (currentSelectedTile) {
-        
-            // unless it's the 2nd item we have nothing to compare
-            if (counter === 1) {
-                return (lastVal === this.GameBoard[currentSelectedTile]._value);
-            }
-
-            // store the first item for the next iteration
-            lastVal = this.GameBoard[currentSelectedTile].Value;
-            counter++;
-        })
+    var matchingTiles = true;
+    var previousValue = null;
+    var selectionSize = 0;
+    for (var tileId in this.SelectedTiles) {
+        var currentValue = this.SelectedTiles[tileId]._value;
+        if (previousValue != null) {
+            matchingTiles = matchingTiles && currentValue == previousValue;
+        }
+        previousValue = currentValue;
+        selectionSize++;
     }
-    else
-    {
-        return false;
-    }
-}
-
-Level.prototype.CheckWin = function () {
-
-}
+    return selectionSize > 1 && matchingTiles;
+};

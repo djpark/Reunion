@@ -27,14 +27,24 @@ Level.prototype.OnClick = function (tileId) {
 };
 
 Level.prototype.AreSelectedTilesSame = function () {
+
+    //initializing stuff
     var matchingTiles = true;
     var previousValue = null;
     var selectionSize = 0;
+
+    // check every tile from the SelectedTiles array
     for (var tileId in this.SelectedTiles) {
+
+        // save current value for comparison
         var currentValue = this.SelectedTiles[tileId]._value;
+
+        // check if we're messing with the first tile if not proceed
         if (previousValue != null) {
             matchingTiles = matchingTiles && currentValue == previousValue;
         }
+
+        //one more loop
         previousValue = currentValue;
         selectionSize++;
     }
@@ -56,3 +66,4 @@ Level.prototype.IsGameOver = function () {
 
     return gameComplete;
 }
+

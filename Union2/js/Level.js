@@ -15,9 +15,68 @@ var Level = function () {
  * Takes in the ID of the tile which was most recently clicked.
  */
 Level.prototype.OnClick = function (tileId) {
-    // This makes an array of selected tiles, but if you clicked the same one twice it doesn't add it.
-    this.SelectedTiles[tileId] = tileId;
 
-    // This is the Tile associated with tileId
-    this.GameBoard[tileId];
+    // Flip it if we haven't flipped it yet.
+    if (this.SelectedTiles[tileId] == null)
+        this.GameBoard[tileId].Flip();
+
+    // This makes an array of selected tiles, but if you clicked the same one twice it doesn't add it.
+    this.SelectedTiles[tileId] = this.GameBoard[tileId];
+
+    // Do we have a match?
+    if (this.AreSelectedTilesSame()) {
+        // Mark all selected tiles as complete.
+        for (var tileId in this.SelectedTiles) {
+            this.SelectedTiles[tileId].Complete();
+        }
+
+        // Clean out your current selection
+        this.SelectedTiles = new Array();
+
+        if (this.IsGameOver()) {
+            window.history.back();
+        };
+    }
 };
+
+Level.prototype.AreSelectedTilesSame = function () {
+
+    //initializing stuff
+    var matchingTiles = true;
+    var previousValue = null;
+    var selectionSize = 0;
+
+    // check every tile from the SelectedTiles array
+    for (var tileId in this.SelectedTiles) {
+
+        // save current value for comparison
+        var currentValue = this.SelectedTiles[tileId]._value;
+
+        // check if we're messing with the first tile if not proceed
+        if (previousValue != null) {
+            matchingTiles = matchingTiles && currentValue == previousValue;
+        }
+
+        //one more loop
+        previousValue = currentValue;
+        selectionSize++;
+    }
+    return selectionSize > 1 && matchingTiles;
+};
+
+Level.prototype.IsGameOver = function () {
+
+    //initialize stuff
+    var gameComplete = true;
+
+    // walk through the gameboard and make sure they are all complete
+    for (var tile in this.GameBoard) {
+
+        // if any if the tiles are incomplete the game is not complete
+        if (!tile._complete)
+            gameComplete = false;
+    }
+
+    return gameComplete;
+}
+

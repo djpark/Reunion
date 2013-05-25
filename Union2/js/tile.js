@@ -30,6 +30,8 @@ var Tile = function (value, gridX, gridY, theme) {
 Tile.prototype.CreateDiv = function()
 {
     var x = document.createElement("div");
+
+    var _self = this;
     $(x)
         .width(this._theme.Width + "px")
         .height(this._theme.Height + "px")
@@ -42,8 +44,16 @@ Tile.prototype.CreateDiv = function()
         .css("position", "absolute")
         .appendTo("#gameContainer")
         .click(function () {
-            $(this).css("background-position", "0px 0px")
+            CURRENT_LEVEL.OnClick(this);
         });
+    return x;
+};
+
+Tile.prototype.OnClick = function (domElement) {
+
+    $(domElement)
+    this._flipped = true;
+    
 };
 
 /**

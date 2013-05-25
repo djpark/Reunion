@@ -40,3 +40,19 @@ Level.prototype.AreSelectedTilesSame = function () {
     }
     return selectionSize > 1 && matchingTiles;
 };
+
+Level.prototype.IsGameOver = function () {
+
+    //initialize stuff
+    var gameComplete = true;
+
+    // walk through the gameboard and make sure they are all complete
+    for (var tile in this.GameBoard) {
+
+        // if any if the tiles are incomplete the game is not complete
+        if (!tile._complete)
+            gameComplete = false;
+    }
+
+    return gameComplete;
+}

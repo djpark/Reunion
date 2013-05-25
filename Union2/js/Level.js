@@ -21,3 +21,34 @@ Level.prototype.OnClick = function (tileId) {
     // This is the Tile associated with tileId
     this.GameBoard[tileId];
 };
+
+Level.prototype.AreSelectedTilesSame = function () {
+
+    // initialize shiet
+    var lastVal = null;
+    var counter = 0;
+
+    // go through the array
+    if (this.SelectedTiles.length > 1)
+    {
+        this.SelectedTiles.forEach(function (currentSelectedTile) {
+        
+            // unless it's the 2nd item we have nothing to compare
+            if (counter === 1) {
+                return (lastVal === this.GameBoard[currentSelectedTile]._value);
+            }
+
+            // store the first item for the next iteration
+            lastVal = this.GameBoard[currentSelectedTile].Value;
+            counter++;
+        })
+    }
+    else
+    {
+        return false;
+    }
+}
+
+Level.prototype.CheckWin = function () {
+
+}

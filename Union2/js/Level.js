@@ -3,16 +3,21 @@
  * A class which represents a level.
  */
 var Level = function () {
-    this.GameBoard = [];
-    this.SelectedTiles = [];
+    // An array mapping TileID (string) to Tile.
+    this.GameBoard = new Array();
+
+    // An array of all the tiles you have currently selected.
+    this.SelectedTiles = new Array();
 };
 
 /**
- * A function which is the callback when we click on the passed in dom element.
+ * The main OnClick function for a level.
+ * Takes in the ID of the tile which was most recently clicked.
  */
-Level.prototype.OnClick = function (domElement) {
-    
-    // This makes an array of selected tiles, but if you clicked the same one twice it doesn't.
-    this.SelectedTiles[domElement] = domElement;
-    this.GameBoard[domElement];
+Level.prototype.OnClick = function (tileId) {
+    // This makes an array of selected tiles, but if you clicked the same one twice it doesn't add it.
+    this.SelectedTiles[tileId] = tileId;
+
+    // This is the Tile associated with tileId
+    this.GameBoard[tileId];
 };

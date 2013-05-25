@@ -21,7 +21,7 @@ var CURRENT_LEVEL = new Level();
                 for (var j = 0; j < this.HEIGHT; j++) {
                     var tile = new Tile(this.counter++, i, j, this.theme);
                     var div = tile.CreateDiv();
-                    CURRENT_LEVEL.GameBoard[div] = tile;
+                    CURRENT_LEVEL.GameBoard[div.id] = tile;
                 }
             }
         },

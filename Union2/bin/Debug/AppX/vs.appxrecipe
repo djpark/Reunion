@@ -66,7 +66,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Roy\Documents\reunion\Reunion\Union2\js\Level.js">
       <PackagePath>js\Level.js</PackagePath>
-      <Modified>2013-05-25T21:58:44.808</Modified>
+      <Modified>2013-05-25T22:16:47.110</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Roy\Documents\reunion\Reunion\Union2\js\navigator.js">
       <PackagePath>js\navigator.js</PackagePath>
@@ -74,7 +74,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Roy\Documents\reunion\Reunion\Union2\js\tile.js">
       <PackagePath>js\tile.js</PackagePath>
-      <Modified>2013-05-25T22:00:33.268</Modified>
+      <Modified>2013-05-25T22:17:01.589</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Roy\Documents\reunion\Reunion\Union2\lib\jquery-1.8.0.min.js">
       <PackagePath>lib\jquery-1.8.0.min.js</PackagePath>
@@ -86,7 +86,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Roy\Documents\reunion\Reunion\Union2\pages\gameboard\gameboard.js">
       <PackagePath>pages\gameboard\gameboard.js</PackagePath>
-      <Modified>2013-05-25T22:01:09.169</Modified>
+      <Modified>2013-05-25T22:13:17.257</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Roy\Documents\reunion\Reunion\Union2\pages\home\home.js">
       <PackagePath>pages\home\home.js</PackagePath>

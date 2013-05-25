@@ -6,6 +6,9 @@
 // The padding between tiles (in px)
 var TILE_PADDING = 10;
 
+// Used to generate the TileId string
+var numTiles = 0;
+
 var Tile = function (value, gridX, gridY, theme) {
 
     value = value || 0;
@@ -43,8 +46,9 @@ Tile.prototype.CreateDiv = function()
         .css("height", this._theme.TileHeight + "px")
         .css("position", "absolute")
         .appendTo("#gameContainer")
+        .attr("id", numTiles++)
         .click(function () {
-            CURRENT_LEVEL.OnClick(this);
+            CURRENT_LEVEL.OnClick(this.id);
         });
     return x;
 };

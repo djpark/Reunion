@@ -1,0 +1,37 @@
+﻿.homepage section[role=main] {
+    margin-left: 120px;
+}
+
+.ButtonContainer {
+    width:200px;
+    height: 50px;
+}
+
+#StartGameButton {
+    margin:0px;
+    padding:10px 15px;
+    background-color:blue;
+    color:white;
+    font-size:20px;
+}
+
+#ScoreBoardButton {
+    margin:0px;
+    padding:10px 15px;
+    background-color:red;
+    color:white;
+    font-size:20px;
+}|
+
+@media screen and (-ms-view-state: snapped) {
+    .homepage section[role=main] {
+        margin-left: 20px;
+        background-color: red;
+    }
+}
+
+@media screen and (-ms-view-state: portrait) {
+    .homepage section[role=main] {
+        margin-left: 100px;
+    }
+}

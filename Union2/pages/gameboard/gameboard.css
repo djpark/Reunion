@@ -2,8 +2,12 @@
     margin-left: 120px;
 }
 
+#body {
+    background-color: #3a3a3a;
+}
+
 .tile {
-   	border-radius: 20px;
+   	border-radius: 6px;
 }
 
 #gameContainer
@@ -11,5 +15,4 @@
 	position:fixed;
 	top: 50%;
 	left: 50%;
-	border: 1px solid red;
 }

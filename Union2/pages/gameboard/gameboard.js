@@ -12,8 +12,8 @@ var CURRENT_LEVEL;
         // populates the page elements with the app's data.
         ready: function (element, options) {
             // TODO: Initialize the page here.
-            var theme = new Theme("/images/theme1.png", 9/*numRows*/, 6/*numCols*/, 33, 56);
-            CURRENT_LEVEL = new Level(2, 2,theme);
+            var theme = new Theme("/images/theme2.png", 7/*numRows*/, 5/*numCols*/, 84, 104);
+            CURRENT_LEVEL = new Level(10, 6, theme);
             CURRENT_LEVEL.Begin();
         },
 

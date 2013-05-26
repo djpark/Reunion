@@ -120,6 +120,10 @@ Level.prototype.IsGameOver = function () {
             return false
     }
 
+    // Register the game stats to the game manager
+    var gameManager = new GameManager();
+    gameManager.AddGameEntry(100, 100);
+
     //if we're here it's because the game is complete
     return true;
 }

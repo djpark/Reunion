@@ -1,14 +1,10 @@
-﻿
-// A static int used to uniquely identify tiles.
-var s_numTiles = 0;
-
-var CARD_COLORS = ["#208c9f", "#aa5c00", "#b39436", "#778d21", "#8b8b8b"];
+﻿var CARD_COLORS = ["#208c9f", "#aa5c00", "#b39436", "#778d21", "#8b8b8b"];
 
 /**
  * Tile
  * A class which represents a tile within the game.
  */
-var Tile = function (value, theme) {
+var Tile = function (value, theme, tileId) {
 
     // The 'value' of this tile, corresponds to which image it shows when flipped.
     this._value = value;
@@ -22,7 +18,7 @@ var Tile = function (value, theme) {
     // This tile has been completed.
     this._complete = false;
 
-    this._tileId = s_numTiles++;
+    this._tileId = tileId;
 };
 
 /**

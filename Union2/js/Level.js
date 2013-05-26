@@ -36,21 +36,52 @@ var Level = function (width, height, theme) {
     this._gameStarted = false;
 };
 
-Level.prototype.Begin = function() {
+Level.prototype.Begin = function () {
+    var tileId = 0;
     for (var i = 0; i < this._width; i++) {
         for (var j = 0; j < this._height; j++) {
-            var tile = new Tile(i + 1, this._theme);
+            var tile = new Tile(i + 1, this._theme, tileId++);
             var div = tile.CreateDiv();
             $(div).appendTo("#gameContainer");
             CURRENT_LEVEL.GameBoard[div.id] = tile;
             tile.PositionDiv(i, j);
         }
     }
+
+    this.CenterBoard();
+    this.ShuffleBoard();
+};
+
+/**
+ * Center and scale the gameboard for your screen.
+ */
+Level.prototype.CenterBoard = function () {
+    /*var windowWidth = window.outerWidth;
+    var windowHeight = window.outerHeight;
+
     var gameContainerWidth = this._theme.TileWidth * this._width + (this._width - 1) * TILE_PADDING;
     var gameContainerHeight = this._theme.TileHeight * this._height + (this._height - 1) * TILE_PADDING;
+    
+    var gameAspect = gameContainerWidth / gameContainerHeight;
+    
+    var scaleHeight = 0.85 / (gameContainerHeight / windowHeight);
+
+    var newGameContainerHeight = gameContainerHeight * scaleHeight;
+    var newGameContainerWidth = newGameContainerHeight * gameAspect;
+
+    var scaleWidth = newGameContainerWidth / gameContainerWidth;
+
+    scaleWidth = scaleWidth.toFixed(1);
+    scaleHeight = scaleHeight.toFixed(1);
+    
+    $("#gameContainer").css("transform", "scaleX(" + scaleWidth + ") scaleY(" + scaleHeight + ")");
+    */
+    var gameContainerWidth = this._theme.TileWidth * this._width + (this._width - 1) * TILE_PADDING;
+    var gameContainerHeight = this._theme.TileHeight * this._height + (this._height - 1) * TILE_PADDING;
+
+
     $("#gameContainer").css("marginLeft", -gameContainerWidth / 2 + "px");
     $("#gameContainer").css("marginTop", -gameContainerHeight / 2 + "px");
-    this.ShuffleBoard();
 };
 
 /**

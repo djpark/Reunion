@@ -6,6 +6,8 @@
 // A static int used to uniquely identify tiles.
 var s_numTiles = 0;
 
+var CARD_COLORS = ["#208c9f", "#aa5c00", "#b39436", "#778d21", "#8b8b8b"];
+
 var Tile = function (value, theme) {
 
     value = value || 0;
@@ -31,12 +33,14 @@ var Tile = function (value, theme) {
 Tile.prototype.CreateDiv = function()
 {
     var x = document.createElement("div");
+    var colorIndex = Math.floor(Math.random() * (CARD_COLORS.length));
 
     $(x)
         .width(this._theme.Width + "px")
         .height(this._theme.Height + "px")
         .addClass("tile")
-        .css("background-image", "url(" + this._theme.ImageUrl + ")")
+        .css("background-color", CARD_COLORS[colorIndex])
+        //.css("background-image", "url(" + this._theme.ImageUrl + ")")
         .css("width", this._theme.TileWidth + "px")
         .css("height", this._theme.TileHeight + "px")
         .css("position", "absolute")

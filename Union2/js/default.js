@@ -8,11 +8,11 @@
     var app = WinJS.Application;
     var activation = Windows.ApplicationModel.Activation;
     var nav = WinJS.Navigation;
+    var gameManager = new GameManager();
 
-    var applicationData = Windows.Storage.ApplicationData.current;
-    var roamingSettings = applicationData.roamingSettings;
-
-    WinJS.Application.sessionState.gameManager = new GameManager();
+    //var applicationData = Windows.Storage.ApplicationData.current;
+    //var roamingSettings = applicationData.roamingSettings;
+    //WinJS.Application.sessionState.gameManager = new GameManager();
 
     app.addEventListener("activated", function (args) {
         if (args.detail.kind === activation.ActivationKind.launch) {

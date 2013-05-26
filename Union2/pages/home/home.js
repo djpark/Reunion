@@ -13,8 +13,9 @@
 
         linkClickEventHandler: function (eventInfo) {
             eventInfo.preventDefault();
+            $("#" + eventInfo.currentTarget.children[0].attributes[1].nodeValue).css("transform", "scaleX(0.9) scaleY(0.9)");
             var link = eventInfo.currentTarget;
-            WinJS.Navigation.navigate(link.href);
+            setTimeout(function(){WinJS.Navigation.navigate(link.href);},50);
         }
     });
 })();

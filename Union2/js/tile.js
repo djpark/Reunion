@@ -46,7 +46,13 @@ Tile.prototype.CreateDiv = function()
         .click(function () {
             CURRENT_LEVEL.OnClick(this.id);
         });
+    this.PositionDiv(-2, -2);
     return x;
+};
+
+Tile.prototype.PositionDiv = function (leftIndex, topIndex) {
+    $("#" + this._tileId).css("left", leftIndex * (this._theme.TileWidth + TILE_PADDING) + "px");
+    $("#" + this._tileId).css("top", topIndex * (this._theme.TileHeight + TILE_PADDING) + "px");
 };
 
 Tile.prototype.Flip = function() {

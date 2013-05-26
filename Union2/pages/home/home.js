@@ -13,7 +13,7 @@
 
         linkClickEventHandler: function (eventInfo) {
             eventInfo.preventDefault();
-            var link = eventInfo.target;
+            var link = eventInfo.currentTarget;
             WinJS.Navigation.navigate(link.href);
         }
     });

@@ -4,11 +4,22 @@
 }
 
 #scoreboard {
+    margin-left:120px;
     width:500px;
     background-color:white;
-    color:white;
 }
 
 #scoreboard p {
     color:black;
+    font-size:25px;
+}
+
+#clearScoreBoardButton {
+    margin-left:120px;
+    background-color:blue;
+    color:white;
+    width:200px;
+    height:50px;
+    font-size:30px;
+    font-weight:bold;
 }

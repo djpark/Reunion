@@ -27,6 +27,21 @@ var Game = function (timeElapsed, numberOfMoves) {
 }
 
 /**
+ * ClearGames
+ * Remove all games from the localfolder
+ */
+GameManager.prototype.ClearGames = function () {
+    var applicationData = Windows.Storage.ApplicationData.current;
+    var localFolder = applicationData.localFolder;
+
+    // Replace the existing file with empty content 
+    localFolder.createFileAsync("gamedata.txt", Windows.Storage.CreationCollisionOption.replaceExisting).
+    then(function (sampleFile) {
+        return Windows.Storage.FileIO.appendTextAsync(sampleFile, "[]");
+    });
+}
+
+/**
  * AddGameEntry
  * Add game detail to the GamesPlayed array
  */
@@ -39,29 +54,32 @@ GameManager.prototype.AddGameEntry = function (timeElapsed, numberOfMoves) {
     var applicationData = Windows.Storage.ApplicationData.current;
     var localFolder = applicationData.localFolder;
 
-    //localFolder.createFileAsync("gamedata.txt", Windows.Storage.CreationCollisionOption.replaceExisting).
-    //then(function (sampleFile) {
-    //    return Windows.Storage.FileIO.appendTextAsync(sampleFile, gameDataSerialized);
-    //});
 
-    // First get the existing items and push the new game
+    // First get the existing games from the localfolder
     localFolder.getFileAsync("gamedata.txt")
         .then(function (sampleFile) {
             return Windows.Storage.FileIO.readTextAsync(sampleFile);
         })
         .done(function (gotscores) {
+            // JSON.parse bombs out if gotscores is ever empty so convert to empty array instead
+            if (gotscores == "")
+                gotscores = "[]";
+
             var scores = new Array();
             var results = JSON.parse(gotscores);
             
+            // Then iterate through the games and push into our temp array
             for (var i = 0; i < results.length; i++) {
                 scores.push(results[i]);
             }
 
+            // Push the latest game
             scores.push(game);
             
+            // Then serialize the results
             var gameDataSerialized = JSON.stringify(scores);
 
-            // Then write the new object back to the file
+            // and write the new object back to the file
             localFolder.createFileAsync("gamedata.txt", Windows.Storage.CreationCollisionOption.replaceExisting)
             .then(function (sampleFile) {
                 return Windows.Storage.FileIO.appendTextAsync(sampleFile, gameDataSerialized);

@@ -25,6 +25,12 @@ var Level = function (width, height, theme) {
 
     // It's a thread and it's busy.. sometimes
     this._threadBusy = false;
+
+    // Keep track of number of moves in current game
+    this._numberOfMoves = 0;
+
+    // Keep track of amount of time elapsed in current game
+    this._timeElapsed = 0;
 };
 
 Level.prototype.Begin = function() {
@@ -133,13 +139,13 @@ Level.prototype.AreSelectedTilesSame = function () {
 Level.prototype.IsGameOver = function () {
     // walk through the gameboard and make sure they are all complete
     for (var tileID in this.GameBoard) {
-
         // if any if the tiles are incomplete the game is not complete and we return
         if (!this.GameBoard[tileID]._complete)
             return false
     }
 
     // Register the game stats to the game manager
+    // TODO: Need to pass in appropriate timeElapsed and numMoves
     var gameManager = new GameManager();
     gameManager.AddGameEntry(100, 100);
 

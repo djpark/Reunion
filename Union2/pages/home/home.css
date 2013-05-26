@@ -2,6 +2,8 @@
     margin-left: 120px;
 }
 
+
+
 .PageBackground {
     width:auto;
     height:497px;
@@ -54,6 +56,15 @@
     background-image:url('/images/bg_multiplayer_score.png');
     background-repeat:no-repeat;
     background-position-x:197px;
+}
+
+#MainLogo {
+    width:148px;
+    height:38px;
+    background-image:url('/images/main_logo.png');
+    background-repeat:no-repeat;
+    margin-left:110px;
+    margin-top:50px;;
 }
 
 @media screen and (-ms-view-state: snapped) {

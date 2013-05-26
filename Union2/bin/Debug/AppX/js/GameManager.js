@@ -10,6 +10,20 @@
 var GameManager = function () {
     // An array storing all the games played
     this.GamesPlayed = new Array();
+    this.GamesPlayed.push(new Game(1, 1));
+    this.GamesPlayed.push(new Game(1, 1));
+    this.GamesPlayed.push(new Game(1, 1));
+    this.GamesPlayed.push(new Game(1, 1));
+
+    var gameDataSerialized = JSON.stringify(this.GamesPlayed);
+
+    var applicationData = Windows.Storage.ApplicationData.current;
+    var localFolder = applicationData.localFolder;
+
+    localFolder.createFileAsync("gamedata.txt", Windows.Storage.CreationCollisionOption.openIfExists)
+    .then(function (sampleFile) {
+        return Windows.Storage.FileIO.writeTextAsync(sampleFile, gameDataSerialized);
+    });
 };
 
 /**

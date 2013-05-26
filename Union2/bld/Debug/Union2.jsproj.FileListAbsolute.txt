@@ -14,10 +14,6 @@ C:\Users\admin\Documents\GitHub\Union2\Union2\Union2\bld\Debug\ProjectArchitectu
 C:\Users\admin\Documents\GitHub\Union2\Union2\bin\Debug\resources.pri
 C:\Users\admin\Documents\GitHub\Union2\Union2\bin\Debug\AppxManifest.xml
 C:\Users\admin\Documents\GitHub\Union2\Union2\bin\Debug\Union2.build.appxrecipe
-C:\Users\admin\Documents\GitHub\Union2\Union2\bld\Debug\priconfig.xml.intermediate
-C:\Users\admin\Documents\GitHub\Union2\Union2\bld\Debug\layout.resfiles.intermediate
-C:\Users\admin\Documents\GitHub\Union2\Union2\bld\Debug\resources.resfiles.intermediate
-C:\Users\admin\Documents\GitHub\Union2\Union2\bld\Debug\pri.resfiles.intermediate
 C:\Users\admin\Documents\GitHub\Union2\Union2\bld\Debug\priconfig.xml
 C:\Users\admin\Documents\GitHub\Union2\Union2\bld\Debug\layout.resfiles
 C:\Users\admin\Documents\GitHub\Union2\Union2\bld\Debug\resources.resfiles

@@ -25,6 +25,7 @@
 
                 });
 
+            // Append the game data to the scoreboard
             for (var i = 0; i < GamesPlayed.length; i++) {
                 var x = document.createElement("p");
                 $(x).html(GamesPlayed[i].datePlayed + " " + GamesPlayed[i].timeElapsed + " " + GamesPlayed[i].numberOfMoves)

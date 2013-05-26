@@ -65,7 +65,7 @@ Level.prototype.OnClick = function (tileId) {
         this.SelectedTiles = new Array();
 
         if (this.IsGameOver()) {
-            window.history.back();
+            $('#pagetitle').text("RICHARD PARKER MOTHERFUCKER");
         };
     }
     // We don't have a match
@@ -112,19 +112,16 @@ Level.prototype.AreSelectedTilesSame = function () {
 };
 
 Level.prototype.IsGameOver = function () {
-
-    //initialize stuff
-    var gameComplete = true;
-
     // walk through the gameboard and make sure they are all complete
-    for (var tile in this.GameBoard) {
+    for (var tileID in this.GameBoard) {
 
-        // if any if the tiles are incomplete the game is not complete
-        if (!tile._complete)
-            gameComplete = false;
+        // if any if the tiles are incomplete the game is not complete and we return
+        if (!this.GameBoard[tileID]._complete)
+            return false
     }
 
-    return gameComplete;
+    //if we're here it's because the game is complete
+    return true;
 }
 
 Level.prototype.NonNullLength = function (myArray) {

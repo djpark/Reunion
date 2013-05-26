@@ -22,6 +22,9 @@ var Level = function (width, height, theme) {
 
     // The graphical theme of this level.
     this._theme = theme;
+
+    // It's a thread and it's busy.. sometimes
+    this._threadBusy = false;
 };
 
 Level.prototype.Begin = function() {
@@ -47,47 +50,51 @@ Level.prototype.Begin = function() {
  */
 Level.prototype.OnClick = function (tileId) {
 
-    // Flip it if we haven't flipped it yet.
-    if (this.SelectedTiles[tileId] == null) {
-        this.GameBoard[tileId].Flip();
-    }
-
-    // This makes an array of selected tiles, but if you clicked the same one twice it doesn't add it.
-    this.SelectedTiles[tileId] = this.GameBoard[tileId];
-
-    // Do we have a match?
-    if (this.AreSelectedTilesSame()) {
-        // Mark all selected tiles as complete.
-        for (var tileId in this.SelectedTiles) {
-            this.SelectedTiles[tileId].Complete();
+    if (!this._threadBusy) {
+        // Flip it if we haven't flipped it yet.
+        if (this.SelectedTiles[tileId] == null) {
+            this.GameBoard[tileId].Flip();
         }
 
-        // Clean out your current selection
-        this.SelectedTiles = new Array();
+        // This makes an array of selected tiles, but if you clicked the same one twice it doesn't add it.
+        this.SelectedTiles[tileId] = this.GameBoard[tileId];
 
-        if (this.IsGameOver()) {
-            $('#pagetitle').text("RICHARD PARKER MOTHERFUCKER");
-        };
-    }
-    // We don't have a match
-    else {
-        // Check if we are working on our 2nd tile
-        if (this.NonNullLength(this.SelectedTiles) == 2) {
+        // Do we have a match?
+        if (this.AreSelectedTilesSame()) {
+            // Mark all selected tiles as complete.
+            for (var tileId in this.SelectedTiles) {
+                this.SelectedTiles[tileId].Complete();
+            }
 
-            // in 2 seconds we want the cards to flip back
-            var that = this;
-            setTimeout(function () {
+            // Clean out your current selection
+            this.SelectedTiles = new Array();
 
-                // flip back everything since we didn't get a match
-                for (var tileId in that.SelectedTiles) {
-                    if (that.SelectedTiles[tileId] != null) {
-                        that.SelectedTiles[tileId].Flip();
+            if (this.IsGameOver()) {
+                $('#pagetitle').text("RICHARD PARKER MOTHERFUCKER");
+            };
+        }
+            // We don't have a match
+        else {
+            // Check if we are working on our 2nd tile
+            if (this.NonNullLength(this.SelectedTiles) == 2) {
+
+                // in 2 seconds we want the cards to flip back
+                var that = this;
+                this._threadBusy = true;
+                setTimeout(function () {
+
+                    // flip back everything since we didn't get a match
+                    for (var tileId in that.SelectedTiles) {
+                        if (that.SelectedTiles[tileId] != null) {
+                            that.SelectedTiles[tileId].Flip();
+                        }
                     }
-                }
-                
-                //clear the array
-                that.SelectedTiles = new Array();
-            }, TILE_FLIP_DELAY);   
+
+                    //clear the array
+                    that.SelectedTiles = new Array();
+                    that._threadBusy = false;
+                }, TILE_FLIP_DELAY);
+            }
         }
     }
 };

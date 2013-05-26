@@ -42,7 +42,7 @@ Level.prototype.Begin = function() {
     var gameContainerHeight = this._theme.TileHeight * this._height + (this._height - 1) * TILE_PADDING;
     $("#gameContainer").css("marginLeft", -gameContainerWidth / 2 + "px");
     $("#gameContainer").css("marginTop", -gameContainerHeight / 2 + "px");
-    this.ShuffleBoard();
+    //this.ShuffleBoard();
 };
 
 /**
@@ -50,52 +50,57 @@ Level.prototype.Begin = function() {
  * Takes in the ID of the tile which was most recently clicked.
  */
 Level.prototype.OnClick = function (tileId) {
+    // Don't do anything if we're waiting to flip back
+    if (this._threadBusy)
+        return;
+    
+    // Don't do anything if we clicked a completed tile.
+    if (this.GameBoard[tileId]._complete)
+        return;
 
-    if (!this._threadBusy) {
-        // Flip it if we haven't flipped it yet.
-        if (this.SelectedTiles[tileId] == null) {
-            this.GameBoard[tileId].Flip();
+    // Flip it if we haven't flipped it yet.
+    if (this.SelectedTiles[tileId] == null) {
+        this.GameBoard[tileId].Flip();
+    }
+
+    // This makes an array of selected tiles, but if you clicked the same one twice it doesn't add it.
+    this.SelectedTiles[tileId] = this.GameBoard[tileId];
+
+    // Do we have a match?
+    if (this.AreSelectedTilesSame()) {
+        // Mark all selected tiles as complete.
+        for (var tileId in this.SelectedTiles) {
+            this.SelectedTiles[tileId].Complete();
         }
 
-        // This makes an array of selected tiles, but if you clicked the same one twice it doesn't add it.
-        this.SelectedTiles[tileId] = this.GameBoard[tileId];
+        // Clean out your current selection
+        this.SelectedTiles = new Array();
 
-        // Do we have a match?
-        if (this.AreSelectedTilesSame()) {
-            // Mark all selected tiles as complete.
-            for (var tileId in this.SelectedTiles) {
-                this.SelectedTiles[tileId].Complete();
-            }
+        if (this.IsGameOver()) {
+            $('#pagetitle').text("RICHARD PARKER MOTHERFUCKER");
+        };
+    }
+    // We don't have a match
+    else {
+        // Check if we are working on our 2nd tile
+        if (this.NonNullLength(this.SelectedTiles) == 2) {
 
-            // Clean out your current selection
-            this.SelectedTiles = new Array();
+            // in 2 seconds we want the cards to flip back
+            var that = this;
+            this._threadBusy = true;
+            setTimeout(function () {
 
-            if (this.IsGameOver()) {
-                $('#pagetitle').text("RICHARD PARKER MOTHERFUCKER");
-            };
-        }
-            // We don't have a match
-        else {
-            // Check if we are working on our 2nd tile
-            if (this.NonNullLength(this.SelectedTiles) == 2) {
-
-                // in 2 seconds we want the cards to flip back
-                var that = this;
-                this._threadBusy = true;
-                setTimeout(function () {
-
-                    // flip back everything since we didn't get a match
-                    for (var tileId in that.SelectedTiles) {
-                        if (that.SelectedTiles[tileId] != null) {
-                            that.SelectedTiles[tileId].Flip();
-                        }
+                // flip back everything since we didn't get a match
+                for (var tileId in that.SelectedTiles) {
+                    if (that.SelectedTiles[tileId] != null) {
+                        that.SelectedTiles[tileId].Flip();
                     }
+                }
 
-                    //clear the array
-                    that.SelectedTiles = new Array();
-                    that._threadBusy = false;
-                }, TILE_FLIP_DELAY);
-            }
+                //clear the array
+                that.SelectedTiles = new Array();
+                that._threadBusy = false;
+            }, TILE_FLIP_DELAY);
         }
     }
 };
@@ -160,7 +165,7 @@ Level.prototype.ShuffleBoard = function () {
         //ask roy how this translates into the actual DOM elements and whether we want to create DIVs as soon as the game starts
         //Does this piece of code need to tear down existing tiles?
         shuffleBoard[randomPosition] = this.GameBoard[i];
-        this.GameBoard = shuffleBoard;
+        this.GameBoard =  shuffleBoard;
 
         // potentially tear down board
 

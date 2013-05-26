@@ -51,15 +51,20 @@ Tile.prototype.CreateDiv = function()
 
 Tile.prototype.Flip = function() {
     this._flipped = !this._flipped;
-    if (this._flipped)
+
+    if (this._flipped) {
         $("#" + this._tileId).css("background-position", this._theme.GetOffset(this._value));
-    else
+        $("#" + this._tileId).css("transform", "rotateY(180deg) scaleX(-1)");
+    }
+    else {
         $("#" + this._tileId).css("background-position", "0px 0px");
+        $("#" + this._tileId).css("transform", "rotateY(0deg) scaleX(1)");
+    }
 };
 
 Tile.prototype.Complete = function () {
     this._complete = true;
-    $("#" + this._tileId).hide();
+    $("#" + this._tileId).css("opacity", "0");
 };
 
 /**

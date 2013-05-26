@@ -25,6 +25,15 @@ var Level = function (width, height, theme) {
 
     // It's a thread and it's busy.. sometimes
     this._threadBusy = false;
+
+    // Keep track of number of moves in current game
+    this._numberOfMoves = 0;
+
+    // Keep track of first click time stamp to compare with end time for total time
+    this._startGameTimeStamp = null;
+
+    // Flag to keep track of whether or not game is started
+    this._gameStarted = false;
 };
 
 Level.prototype.Begin = function() {
@@ -49,6 +58,12 @@ Level.prototype.Begin = function() {
  * Takes in the ID of the tile which was most recently clicked.
  */
 Level.prototype.OnClick = function (tileId) {
+    // Check if game started and grab the start time
+    if (!this._gameStarted) {
+        this._gameStarted = true;
+        this._startGameTimeStamp = new Date();
+    }
+
     // Don't do anything if we're waiting to flip back
     if (this._threadBusy)
         return;
@@ -67,6 +82,9 @@ Level.prototype.OnClick = function (tileId) {
 
     // Do we have a match?
     if (this.AreSelectedTilesSame()) {
+        // Increment the move counter if we are checking the 2nd tile
+        this._numberOfMoves++;
+
         // Mark all selected tiles as complete.
         for (var tileId in this.SelectedTiles) {
             this.SelectedTiles[tileId].Complete();
@@ -83,6 +101,8 @@ Level.prototype.OnClick = function (tileId) {
     else {
         // Check if we are working on our 2nd tile
         if (this.NonNullLength(this.SelectedTiles) == 2) {
+            // Increment the move counter if we are checking the 2nd tile
+            this._numberOfMoves++;
 
             // in 2 seconds we want the cards to flip back
             var that = this;
@@ -132,15 +152,18 @@ Level.prototype.AreSelectedTilesSame = function () {
 Level.prototype.IsGameOver = function () {
     // walk through the gameboard and make sure they are all complete
     for (var tileID in this.GameBoard) {
-
         // if any if the tiles are incomplete the game is not complete and we return
         if (!this.GameBoard[tileID]._complete)
             return false
     }
 
+    // Figure out how much time has elapsed since start of this game
+    var now = new Date();
+    var elapsedTime = Math.ceil(now.getTime() - this._startGameTimeStamp.getTime()) / 1000;
+
     // Register the game stats to the game manager
     var gameManager = new GameManager();
-    gameManager.AddGameEntry(100, 100);
+    gameManager.AddGameEntry(this._numberOfMoves, elapsedTime);
 
     //if we're here it's because the game is complete
     return true;

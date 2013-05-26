@@ -47,8 +47,9 @@ Level.prototype.Begin = function() {
 Level.prototype.OnClick = function (tileId) {
 
     // Flip it if we haven't flipped it yet.
-    if (this.SelectedTiles[tileId] == null)
+    if (this.SelectedTiles[tileId] == null) {
         this.GameBoard[tileId].Flip();
+    }
 
     // This makes an array of selected tiles, but if you clicked the same one twice it doesn't add it.
     this.SelectedTiles[tileId] = this.GameBoard[tileId];
@@ -66,6 +67,22 @@ Level.prototype.OnClick = function (tileId) {
         if (this.IsGameOver()) {
             window.history.back();
         };
+    }
+    // We don't have a match
+    else {
+        // Check if we are working on our 2nd tile
+        if (this.NonNullLength(this.SelectedTiles) == 2) {
+
+            // flip back everything since we didn't get a match
+            for (var tileId in this.SelectedTiles) {
+                if (this.SelectedTiles[tileId] != null) {
+                    this.SelectedTiles[tileId].Flip();
+                }
+            }
+
+            // Clean out your current selection
+            this.SelectedTiles = new Array();
+        }
     }
 };
 
@@ -110,3 +127,6 @@ Level.prototype.IsGameOver = function () {
     return gameComplete;
 }
 
+Level.prototype.NonNullLength = function (myArray) {
+    return Object.keys(myArray).length;
+};

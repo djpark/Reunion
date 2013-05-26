@@ -1,101 +1,101 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>MASARAP-NIKE</Machine>
-    <WindowsUser>admin</WindowsUser>
+    <Machine>DRWILY</Machine>
+    <WindowsUser>davidngo</WindowsUser>
     <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
     <PackageArchitecture>neutral</PackageArchitecture>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\admin\Documents\GitHub\Union2\Union2\bin\Debug\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\davidngo\Documents\GitHub\Reunion\Union2\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\css\default.css">
+    <AppxPackagedFile Include="C:\Users\davidngo\Documents\GitHub\Reunion\Union2\css\default.css">
       <PackagePath>css\default.css</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\pages\gameboard\gameboard.css">
+    <AppxPackagedFile Include="C:\Users\davidngo\Documents\GitHub\Reunion\Union2\pages\gameboard\gameboard.css">
       <PackagePath>pages\gameboard\gameboard.css</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\pages\home\home.css">
+    <AppxPackagedFile Include="C:\Users\davidngo\Documents\GitHub\Reunion\Union2\pages\home\home.css">
       <PackagePath>pages\home\home.css</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\pages\scoreboard\scoreboard.css">
+    <AppxPackagedFile Include="C:\Users\davidngo\Documents\GitHub\Reunion\Union2\pages\scoreboard\scoreboard.css">
       <PackagePath>pages\scoreboard\scoreboard.css</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\images\logo.png">
+    <AppxPackagedFile Include="C:\Users\davidngo\Documents\GitHub\Reunion\Union2\images\logo.png">
       <PackagePath>images\logo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\images\smalllogo.png">
+    <AppxPackagedFile Include="C:\Users\davidngo\Documents\GitHub\Reunion\Union2\images\smalllogo.png">
       <PackagePath>images\smalllogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\images\splashscreen.png">
+    <AppxPackagedFile Include="C:\Users\davidngo\Documents\GitHub\Reunion\Union2\images\splashscreen.png">
       <PackagePath>images\splashscreen.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\images\storelogo.png">
+    <AppxPackagedFile Include="C:\Users\davidngo\Documents\GitHub\Reunion\Union2\images\storelogo.png">
       <PackagePath>images\storelogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\images\theme1.png">
+    <AppxPackagedFile Include="C:\Users\davidngo\Documents\GitHub\Reunion\Union2\images\theme1.png">
       <PackagePath>images\theme1.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\js\default.js">
+    <AppxPackagedFile Include="C:\Users\davidngo\Documents\GitHub\Reunion\Union2\js\default.js">
       <PackagePath>js\default.js</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\js\GameManager.js">
+    <AppxPackagedFile Include="C:\Users\davidngo\Documents\GitHub\Reunion\Union2\js\GameManager.js">
       <PackagePath>js\GameManager.js</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\js\Level.js">
+    <AppxPackagedFile Include="C:\Users\davidngo\Documents\GitHub\Reunion\Union2\js\Level.js">
       <PackagePath>js\Level.js</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\js\navigator.js">
+    <AppxPackagedFile Include="C:\Users\davidngo\Documents\GitHub\Reunion\Union2\js\navigator.js">
       <PackagePath>js\navigator.js</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\js\tile.js">
+    <AppxPackagedFile Include="C:\Users\davidngo\Documents\GitHub\Reunion\Union2\js\tile.js">
       <PackagePath>js\tile.js</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\lib\jquery-1.8.0.min.js">
+    <AppxPackagedFile Include="C:\Users\davidngo\Documents\GitHub\Reunion\Union2\lib\jquery-1.8.0.min.js">
       <PackagePath>lib\jquery-1.8.0.min.js</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\lib\jquery-2.0.1.min.js">
+    <AppxPackagedFile Include="C:\Users\davidngo\Documents\GitHub\Reunion\Union2\lib\jquery-2.0.1.min.js">
       <PackagePath>lib\jquery-2.0.1.min.js</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\pages\gameboard\gameboard.js">
+    <AppxPackagedFile Include="C:\Users\davidngo\Documents\GitHub\Reunion\Union2\pages\gameboard\gameboard.js">
       <PackagePath>pages\gameboard\gameboard.js</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\pages\home\home.js">
+    <AppxPackagedFile Include="C:\Users\davidngo\Documents\GitHub\Reunion\Union2\pages\home\home.js">
       <PackagePath>pages\home\home.js</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\pages\scoreboard\scoreboard.js">
+    <AppxPackagedFile Include="C:\Users\davidngo\Documents\GitHub\Reunion\Union2\pages\scoreboard\scoreboard.js">
       <PackagePath>pages\scoreboard\scoreboard.js</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\pages\gameboard\gameboard.html">
+    <AppxPackagedFile Include="C:\Users\davidngo\Documents\GitHub\Reunion\Union2\pages\gameboard\gameboard.html">
       <PackagePath>pages\gameboard\gameboard.html</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\pages\home\home.html">
+    <AppxPackagedFile Include="C:\Users\davidngo\Documents\GitHub\Reunion\Union2\pages\home\home.html">
       <PackagePath>pages\home\home.html</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\default.html">
+    <AppxPackagedFile Include="C:\Users\davidngo\Documents\GitHub\Reunion\Union2\default.html">
       <PackagePath>default.html</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\pages\scoreboard\scoreboard.html">
+    <AppxPackagedFile Include="C:\Users\davidngo\Documents\GitHub\Reunion\Union2\pages\scoreboard\scoreboard.html">
       <PackagePath>pages\scoreboard\scoreboard.html</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\bin\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\davidngo\Documents\GitHub\Reunion\Union2\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.0\ExtensionSDKs\Microsoft.WinJS.1.0\1.0\">
       <Name>Microsoft.WinJS.1.0</Name>
-      <Version>1.0.8514.0</Version>
+      <Version>1.0.9200.20602</Version>
       <Architecture>Neutral</Architecture>
-      <FrameworkIdentity>Name=Microsoft.WinJS.1.0, MinVersion=1.0.8514.0</FrameworkIdentity>
+      <FrameworkIdentity>Name=Microsoft.WinJS.1.0, MinVersion=1.0.9200.20602</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.0\ExtensionSDKs\Microsoft.WinJS.1.0\1.0\Microsoft.WinJS.1.0.appx</AppxLocation>
     </ResolvedSDKReference>
   </ItemGroup>

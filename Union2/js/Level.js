@@ -39,19 +39,18 @@ var Level = function (width, height, theme) {
 Level.prototype.Begin = function() {
     for (var i = 0; i < this._width; i++) {
         for (var j = 0; j < this._height; j++) {
-            var tile = new Tile(i, this._theme);
+            var tile = new Tile(i + 1, this._theme);
             var div = tile.CreateDiv();
-            $(div).css("left", i * (this._theme.TileWidth + TILE_PADDING) + "px");
-            $(div).css("top", j * (this._theme.TileHeight + TILE_PADDING) + "px");
             $(div).appendTo("#gameContainer");
             CURRENT_LEVEL.GameBoard[div.id] = tile;
+            tile.PositionDiv(i, j);
         }
     }
     var gameContainerWidth = this._theme.TileWidth * this._width + (this._width - 1) * TILE_PADDING;
     var gameContainerHeight = this._theme.TileHeight * this._height + (this._height - 1) * TILE_PADDING;
     $("#gameContainer").css("marginLeft", -gameContainerWidth / 2 + "px");
     $("#gameContainer").css("marginTop", -gameContainerHeight / 2 + "px");
-    //this.ShuffleBoard();
+    this.ShuffleBoard();
 };
 
 /**
@@ -174,24 +173,25 @@ Level.prototype.NonNullLength = function (myArray) {
     return Object.keys(myArray).length;
 };
 
+
+/**
+ * Shuffle the board
+ */
 Level.prototype.ShuffleBoard = function () {
+
     var shuffleBoard = new Array(this.GameBoard.length);
+
     for (var i = 0; i < this.GameBoard.length; i++) {
-        var randomPosition = Math.round(Math.random() * 59);
+        var randomPosition = Math.round(Math.random() * (this.GameBoard.length - 1));
+
         while (shuffleBoard[randomPosition] != null)
-        {
-            randomPosition++;
-            if (randomPosition > this.GameBoard.length)
-                randomPosition = 0;
-        }
+            randomPosition = ++randomPosition % this.GameBoard.length;
 
-        //ask roy how this translates into the actual DOM elements and whether we want to create DIVs as soon as the game starts
-        //Does this piece of code need to tear down existing tiles?
-        shuffleBoard[randomPosition] = this.GameBoard[i];
-        this.GameBoard =  shuffleBoard;
+        var top = Math.floor(i / this._width);
+        var left = Math.floor(i % this._width);
 
-        // potentially tear down board
+        this.GameBoard[randomPosition].PositionDiv(left, top);
 
-        // potentially rebuild board
+        shuffleBoard[randomPosition] = true;
     }
-}
+};

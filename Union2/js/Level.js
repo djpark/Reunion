@@ -2,12 +2,42 @@
  * Level
  * A class which represents a level.
  */
-var Level = function () {
+
+// The padding between tiles (in px)
+var TILE_PADDING = 10;
+
+var Level = function (width, height, theme) {
     // An array mapping TileID (string) to Tile.
     this.GameBoard = new Array();
 
     // An array of all the tiles you have currently selected.
     this.SelectedTiles = new Array();
+
+    // The width (in number of tiles) of this level.
+    this._width = width;
+
+    // The height of this level (in number of tiles)
+    this._height = height;
+
+    // The graphical theme of this level.
+    this._theme = theme;
+};
+
+Level.prototype.Begin = function() {
+    for (var i = 0; i < this._width; i++) {
+        for (var j = 0; j < this._height; j++) {
+            var tile = new Tile(i, this._theme);
+            var div = tile.CreateDiv();
+            $(div).css("left", i * (this._theme.TileWidth + TILE_PADDING) + "px");
+            $(div).css("top", j * (this._theme.TileHeight + TILE_PADDING) + "px");
+            $(div).appendTo("#gameContainer");
+            CURRENT_LEVEL.GameBoard[div.id] = tile;
+        }
+    }
+    var gameContainerWidth = this._theme.TileWidth * this._width + (this._width - 1) * TILE_PADDING;
+    var gameContainerHeight = this._theme.TileHeight * this._height + (this._height - 1) * TILE_PADDING;
+    $("#gameContainer").css("marginLeft", -gameContainerWidth / 2 + "px");
+    $("#gameContainer").css("marginTop", -gameContainerHeight / 2 + "px");
 };
 
 /**

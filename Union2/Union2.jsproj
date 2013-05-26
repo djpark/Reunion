@@ -58,6 +58,7 @@
     <Content Include="images\btn_play_N.png" />
     <Content Include="images\btn_score_N.png" />
     <Content Include="images\logo.png" />
+    <Content Include="images\main_logo.png" />
     <Content Include="images\smalllogo.png" />
     <Content Include="images\splashscreen.png" />
     <Content Include="images\storelogo.png" />

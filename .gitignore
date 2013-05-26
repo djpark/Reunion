@@ -36,9 +36,9 @@ ehthumbs.db
 Icon?
 Thumbs.db
 
-Union2/Union2/bin
-Union2/Union2/obj
-
+Union2/bin/
+Union2/bld/
+Union2/obj/
 Working/obj/
 
 *.jsproj.user 

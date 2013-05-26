@@ -10,9 +10,6 @@
 var GameManager = function () {
     // An array storing all the games played
     this.GamesPlayed = new Array();
-    this.GamesPlayed.push(1, 1);
-    this.GamesPlayed.push(1, 1);
-    this.GamesPlayed.push(1, 1);
 };
 
 /**
@@ -35,7 +32,7 @@ var Game = function (timeElapsed, numberOfMoves) {
  * Add game detail to the GamesPlayed array
  */
 GameManager.prototype.AddGameEntry = function (timeElapsed, numberOfMoves) {
-    this.GamesPlayed.push(timeElapsed, numberofMoves);
+    this.GamesPlayed.push(new Game(timeElapsed, numberofMoves));
 
     var gameDataSerialized = JSON.stringify(this.GamesPlayed);
 

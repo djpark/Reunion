@@ -16,7 +16,7 @@
     <AppXManifest Include="C:\Users\admin\Documents\GitHub\Union2\Union2\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2013-05-25T22:38:08.433</Modified>
+      <Modified>2013-05-26T00:59:14.234</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -62,15 +62,15 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\js\default.js">
       <PackagePath>js\default.js</PackagePath>
-      <Modified>2013-05-26T00:50:00.883</Modified>
+      <Modified>2013-05-26T00:57:44.286</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\js\GameManager.js">
       <PackagePath>js\GameManager.js</PackagePath>
-      <Modified>2013-05-26T00:51:57.921</Modified>
+      <Modified>2013-05-26T01:01:23.477</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\js\Level.js">
       <PackagePath>js\Level.js</PackagePath>
-      <Modified>2013-05-26T00:22:52.182</Modified>
+      <Modified>2013-05-26T00:53:16.671</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\js\navigator.js">
       <PackagePath>js\navigator.js</PackagePath>
@@ -118,7 +118,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\admin\Documents\GitHub\Union2\Union2\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2013-05-25T22:38:08.245</Modified>
+      <Modified>2013-05-26T00:59:13.828</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

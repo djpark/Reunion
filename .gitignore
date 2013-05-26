@@ -38,6 +38,13 @@ Thumbs.db
 
 Union2/Union2/bin
 Union2/Union2/obj
+Union2/Union2/bin/debug
+Union2/Union2/bin/debug/AppX
+Union2/Union2/bin/debug/AppX/css
+Union2/Union2/bin/debug/AppX/images
+Union2/Union2/bin/debug/AppX/js
+Union2/Union2/bin/debug/AppX/lib
+Union2/Union2/bin/debug/AppX/pages
 
 Working/obj/
 

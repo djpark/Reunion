@@ -15,7 +15,7 @@ var GameManager = function () {
  * Game
  * A class represents a game.
  */
-var Game = function (timeElapsed, numberOfMoves) {
+var Game = function (numberOfMoves, timeElapsed) {
     // Stores the date of when the game was played
     this.datePlayed = new Date();
 
@@ -45,8 +45,8 @@ GameManager.prototype.ClearGames = function () {
  * AddGameEntry
  * Add game detail to the GamesPlayed array
  */
-GameManager.prototype.AddGameEntry = function (timeElapsed, numberOfMoves) {
-    var game = new Game(timeElapsed, numberOfMoves);
+GameManager.prototype.AddGameEntry = function (numberOfMoves, timeElapsed) {
+    var game = new Game(numberOfMoves, timeElapsed);
     this.GamesPlayed.push(game);
 
     var gameDataSerialized = JSON.stringify(this.GamesPlayed);
@@ -54,7 +54,7 @@ GameManager.prototype.AddGameEntry = function (timeElapsed, numberOfMoves) {
     var applicationData = Windows.Storage.ApplicationData.current;
     var localFolder = applicationData.localFolder;
 
-
+    // Try to read the existing gamedata.txt file.  If there's an exception, start over
     // First get the existing games from the localfolder
     localFolder.getFileAsync("gamedata.txt")
         .then(function (sampleFile) {
@@ -67,7 +67,7 @@ GameManager.prototype.AddGameEntry = function (timeElapsed, numberOfMoves) {
 
             var scores = new Array();
             var results = JSON.parse(gotscores);
-            
+
             // Then iterate through the games and push into our temp array
             for (var i = 0; i < results.length; i++) {
                 scores.push(results[i]);
@@ -75,7 +75,7 @@ GameManager.prototype.AddGameEntry = function (timeElapsed, numberOfMoves) {
 
             // Push the latest game
             scores.push(game);
-            
+
             // Then serialize the results
             var gameDataSerialized = JSON.stringify(scores);
 
@@ -84,7 +84,22 @@ GameManager.prototype.AddGameEntry = function (timeElapsed, numberOfMoves) {
             .then(function (sampleFile) {
                 return Windows.Storage.FileIO.appendTextAsync(sampleFile, gameDataSerialized);
             });
-        }, function () {
+        },
+        // Exception handler that creates a new file if one does not already exists
+        // TODO: Figure out how to get more granular with exception catching so we're not doing a global catch
+        function () {
+            var scores = new Array();
 
+            // Push the latest game
+            scores.push(game);
+
+            // Then serialize the results
+            var gameDataSerialized = JSON.stringify(scores);
+
+            // and write the new object back to the file
+            localFolder.createFileAsync("gamedata.txt", Windows.Storage.CreationCollisionOption.replaceExisting)
+            .then(function (sampleFile) {
+                return Windows.Storage.FileIO.appendTextAsync(sampleFile, gameDataSerialized);
+            });
         });
 };

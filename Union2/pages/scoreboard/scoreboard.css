@@ -1,11 +1,11 @@
 ﻿#scoreboardContainer {
     width:100%;
-    text-align:center;
+    text-align:left;
 }
 
 #scoreboard {
     margin-left:120px;
-    width:500px;
+    width:800px;
     background-color:white;
 }
 

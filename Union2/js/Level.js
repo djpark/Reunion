@@ -5,6 +5,7 @@
 
 // The padding between tiles (in px)
 var TILE_PADDING = 10;
+var TILE_FLIP_DELAY = 1000;
 
 var Level = function (width, height, theme) {
     // An array mapping TileID (string) to Tile.
@@ -73,15 +74,20 @@ Level.prototype.OnClick = function (tileId) {
         // Check if we are working on our 2nd tile
         if (this.NonNullLength(this.SelectedTiles) == 2) {
 
-            // flip back everything since we didn't get a match
-            for (var tileId in this.SelectedTiles) {
-                if (this.SelectedTiles[tileId] != null) {
-                    this.SelectedTiles[tileId].Flip();
-                }
-            }
+            // in 2 seconds we want the cards to flip back
+            var that = this;
+            setTimeout(function () {
 
-            // Clean out your current selection
-            this.SelectedTiles = new Array();
+                // flip back everything since we didn't get a match
+                for (var tileId in that.SelectedTiles) {
+                    if (that.SelectedTiles[tileId] != null) {
+                        that.SelectedTiles[tileId].Flip();
+                    }
+                }
+                
+                //clear the array
+                that.SelectedTiles = new Array();
+            }, TILE_FLIP_DELAY);   
         }
     }
 };

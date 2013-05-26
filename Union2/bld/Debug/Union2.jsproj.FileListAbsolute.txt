@@ -37,3 +37,16 @@ C:\Users\Roy\Documents\reunion\Reunion\Union2\bld\Debug\priconfig.xml.intermedia
 C:\Users\Roy\Documents\reunion\Reunion\Union2\bld\Debug\layout.resfiles.intermediate
 C:\Users\Roy\Documents\reunion\Reunion\Union2\bld\Debug\resources.resfiles.intermediate
 C:\Users\Roy\Documents\reunion\Reunion\Union2\bld\Debug\pri.resfiles.intermediate
+C:\Users\davidngo\Documents\GitHub\Reunion\Union2\bin\Debug\resources.pri
+C:\Users\davidngo\Documents\GitHub\Reunion\Union2\bin\Debug\AppxManifest.xml
+C:\Users\davidngo\Documents\GitHub\Reunion\Union2\bin\Debug\Union2.build.appxrecipe
+C:\Users\davidngo\Documents\GitHub\Reunion\Union2\bld\Debug\priconfig.xml.intermediate
+C:\Users\davidngo\Documents\GitHub\Reunion\Union2\bld\Debug\layout.resfiles.intermediate
+C:\Users\davidngo\Documents\GitHub\Reunion\Union2\bld\Debug\resources.resfiles.intermediate
+C:\Users\davidngo\Documents\GitHub\Reunion\Union2\bld\Debug\pri.resfiles.intermediate
+C:\Users\davidngo\Documents\GitHub\Reunion\Union2\bld\Debug\priconfig.xml
+C:\Users\davidngo\Documents\GitHub\Reunion\Union2\bld\Debug\layout.resfiles
+C:\Users\davidngo\Documents\GitHub\Reunion\Union2\bld\Debug\resources.resfiles
+C:\Users\davidngo\Documents\GitHub\Reunion\Union2\bld\Debug\pri.resfiles
+C:\Users\davidngo\Documents\GitHub\Reunion\Union2\bld\Debug\LanguageQualifiers.txt
+C:\Users\davidngo\Documents\GitHub\Reunion\Union2\bld\Debug\ProjectArchitectures.txt

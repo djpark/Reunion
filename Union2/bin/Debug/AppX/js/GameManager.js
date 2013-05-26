@@ -8,22 +8,7 @@
  * A class which manages the history of games played.
  */
 var GameManager = function () {
-    // An array storing all the games played
     this.GamesPlayed = new Array();
-    this.GamesPlayed.push(new Game(1, 1));
-    this.GamesPlayed.push(new Game(1, 1));
-    this.GamesPlayed.push(new Game(1, 1));
-    this.GamesPlayed.push(new Game(1, 1));
-
-    var gameDataSerialized = JSON.stringify(this.GamesPlayed);
-
-    var applicationData = Windows.Storage.ApplicationData.current;
-    var localFolder = applicationData.localFolder;
-
-    localFolder.createFileAsync("gamedata.txt", Windows.Storage.CreationCollisionOption.openIfExists)
-    .then(function (sampleFile) {
-        return Windows.Storage.FileIO.writeTextAsync(sampleFile, gameDataSerialized);
-    });
 };
 
 /**
@@ -46,17 +31,42 @@ var Game = function (timeElapsed, numberOfMoves) {
  * Add game detail to the GamesPlayed array
  */
 GameManager.prototype.AddGameEntry = function (timeElapsed, numberOfMoves) {
-    this.GamesPlayed.push(new Game(timeElapsed, numberofMoves));
+    var game = new Game(timeElapsed, numberOfMoves);
+    this.GamesPlayed.push(game);
 
     var gameDataSerialized = JSON.stringify(this.GamesPlayed);
 
     var applicationData = Windows.Storage.ApplicationData.current;
     var localFolder = applicationData.localFolder;
 
-    localFolder.createFileAsync("gamedata.txt", Windows.Storage.CreationCollisionOption.openIfExists)
-    .then(function (sampleFile) {
-        return Windows.Storage.FileIO.writeTextAsync(sampleFile, gameDataSerialized);
-    });
+    //localFolder.createFileAsync("gamedata.txt", Windows.Storage.CreationCollisionOption.replaceExisting).
+    //then(function (sampleFile) {
+    //    return Windows.Storage.FileIO.appendTextAsync(sampleFile, gameDataSerialized);
+    //});
+
+    // First get the existing items and push the new game
+    localFolder.getFileAsync("gamedata.txt")
+        .then(function (sampleFile) {
+            return Windows.Storage.FileIO.readTextAsync(sampleFile);
+        })
+        .done(function (gotscores) {
+            var scores = new Array();
+            var results = JSON.parse(gotscores);
+            
+            for (var i = 0; i < results.length; i++) {
+                scores.push(results[i]);
+            }
+
+            scores.push(game);
+            
+            var gameDataSerialized = JSON.stringify(scores);
+
+            // Then write the new object back to the file
+            localFolder.createFileAsync("gamedata.txt", Windows.Storage.CreationCollisionOption.replaceExisting)
+            .then(function (sampleFile) {
+                return Windows.Storage.FileIO.appendTextAsync(sampleFile, gameDataSerialized);
+            });
+        }, function () {
+
+        });
 };
-
-

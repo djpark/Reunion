@@ -8,7 +8,6 @@
     var app = WinJS.Application;
     var activation = Windows.ApplicationModel.Activation;
     var nav = WinJS.Navigation;
-    var gameManager = new GameManager();
 
     //var applicationData = Windows.Storage.ApplicationData.current;
     //var roamingSettings = applicationData.roamingSettings;

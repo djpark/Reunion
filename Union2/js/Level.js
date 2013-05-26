@@ -154,21 +154,16 @@ Level.prototype.NonNullLength = function (myArray) {
 Level.prototype.ShuffleBoard = function () {
     var shuffleBoard = new Array(this.GameBoard.length);
     for (var i = 0; i < this.GameBoard.length; i++) {
-        var randomPosition = Math.round(Math.random() * 59);
+        var randomPosition = Math.round(Math.random() * ((this._width * this._height) - 1);
         while (shuffleBoard[randomPosition] != null)
         {
             randomPosition++;
-            if (randomPosition > this.GameBoard.length)
-                randomPosition = 0;
+            randomPosition = randomPosition % this.GameBoard.length;
         }
 
-        //ask roy how this translates into the actual DOM elements and whether we want to create DIVs as soon as the game starts
-        //Does this piece of code need to tear down existing tiles?
         shuffleBoard[randomPosition] = this.GameBoard[i];
-        this.GameBoard =  shuffleBoard;
-
-        // potentially tear down board
-
-        // potentially rebuild board
     }
+
+    // potentially rebuild board
+    this.GameBoard = shuffleBoard;
 }

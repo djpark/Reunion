@@ -29,26 +29,28 @@ var Level = function (width, height, theme) {
     // Keep track of number of moves in current game
     this._numberOfMoves = 0;
 
-    // Keep track of amount of time elapsed in current game
-    this._timeElapsed = 0;
+    // Keep track of first click time stamp to compare with end time for total time
+    this._startGameTimeStamp = null;
+
+    // Flag to keep track of whether or not game is started
+    this._gameStarted = false;
 };
 
 Level.prototype.Begin = function() {
     for (var i = 0; i < this._width; i++) {
         for (var j = 0; j < this._height; j++) {
-            var tile = new Tile(i, this._theme);
+            var tile = new Tile(i + 1, this._theme);
             var div = tile.CreateDiv();
-            $(div).css("left", i * (this._theme.TileWidth + TILE_PADDING) + "px");
-            $(div).css("top", j * (this._theme.TileHeight + TILE_PADDING) + "px");
             $(div).appendTo("#gameContainer");
             CURRENT_LEVEL.GameBoard[div.id] = tile;
+            tile.PositionDiv(i, j);
         }
     }
     var gameContainerWidth = this._theme.TileWidth * this._width + (this._width - 1) * TILE_PADDING;
     var gameContainerHeight = this._theme.TileHeight * this._height + (this._height - 1) * TILE_PADDING;
     $("#gameContainer").css("marginLeft", -gameContainerWidth / 2 + "px");
     $("#gameContainer").css("marginTop", -gameContainerHeight / 2 + "px");
-    //this.ShuffleBoard();
+    this.ShuffleBoard();
 };
 
 /**
@@ -56,6 +58,12 @@ Level.prototype.Begin = function() {
  * Takes in the ID of the tile which was most recently clicked.
  */
 Level.prototype.OnClick = function (tileId) {
+    // Check if game started and grab the start time
+    if (!this._gameStarted) {
+        this._gameStarted = true;
+        this._startGameTimeStamp = new Date();
+    }
+
     // Don't do anything if we're waiting to flip back
     if (this._threadBusy)
         return;
@@ -74,6 +82,9 @@ Level.prototype.OnClick = function (tileId) {
 
     // Do we have a match?
     if (this.AreSelectedTilesSame()) {
+        // Increment the move counter if we are checking the 2nd tile
+        this._numberOfMoves++;
+
         // Mark all selected tiles as complete.
         for (var tileId in this.SelectedTiles) {
             this.SelectedTiles[tileId].Complete();
@@ -90,6 +101,8 @@ Level.prototype.OnClick = function (tileId) {
     else {
         // Check if we are working on our 2nd tile
         if (this.NonNullLength(this.SelectedTiles) == 2) {
+            // Increment the move counter if we are checking the 2nd tile
+            this._numberOfMoves++;
 
             // in 2 seconds we want the cards to flip back
             var that = this;
@@ -144,10 +157,13 @@ Level.prototype.IsGameOver = function () {
             return false
     }
 
+    // Figure out how much time has elapsed since start of this game
+    var now = new Date();
+    var elapsedTime = Math.ceil(now.getTime() - this._startGameTimeStamp.getTime()) / 1000;
+
     // Register the game stats to the game manager
-    // TODO: Need to pass in appropriate timeElapsed and numMoves
     var gameManager = new GameManager();
-    gameManager.AddGameEntry(100, 100);
+    gameManager.AddGameEntry(this._numberOfMoves, elapsedTime);
 
     //if we're here it's because the game is complete
     return true;
@@ -157,24 +173,25 @@ Level.prototype.NonNullLength = function (myArray) {
     return Object.keys(myArray).length;
 };
 
+
+/**
+ * Shuffle the board
+ */
 Level.prototype.ShuffleBoard = function () {
+
     var shuffleBoard = new Array(this.GameBoard.length);
+
     for (var i = 0; i < this.GameBoard.length; i++) {
-        var randomPosition = Math.round(Math.random() * 59);
+        var randomPosition = Math.round(Math.random() * (this.GameBoard.length - 1));
+
         while (shuffleBoard[randomPosition] != null)
-        {
-            randomPosition++;
-            if (randomPosition > this.GameBoard.length)
-                randomPosition = 0;
-        }
+            randomPosition = ++randomPosition % this.GameBoard.length;
 
-        //ask roy how this translates into the actual DOM elements and whether we want to create DIVs as soon as the game starts
-        //Does this piece of code need to tear down existing tiles?
-        shuffleBoard[randomPosition] = this.GameBoard[i];
-        this.GameBoard =  shuffleBoard;
+        var top = Math.floor(i / this._width);
+        var left = Math.floor(i % this._width);
 
-        // potentially tear down board
+        this.GameBoard[randomPosition].PositionDiv(left, top);
 
-        // potentially rebuild board
+        shuffleBoard[randomPosition] = true;
     }
-}
+};

@@ -21,16 +21,16 @@
                 .done(function (gotscores) {
                     var scores = JSON.parse(gotscores);
                     GamesPlayed = scores;
-
-                    // Append the game data to the scoreboard
-                    for (var i = 0; i < GamesPlayed.length; i++) {
-                        var x = document.createElement("p");
-                        $(x).html(GamesPlayed[i].datePlayed + " " + GamesPlayed[i].timeElapsed + " " + GamesPlayed[i].numberOfMoves)
-                            .appendTo("#scoreboard");
-                    }
                 }, function () {
 
                 });
+
+            // Append the game data to the scoreboard
+            for (var i = 0; i < GamesPlayed.length; i++) {
+                var x = document.createElement("p");
+                $(x).html(GamesPlayed[i].datePlayed + " " + GamesPlayed[i].timeElapsed + " " + GamesPlayed[i].numberOfMoves)
+                    .appendTo("#scoreboard");
+            }
         },
 
         unload: function () {

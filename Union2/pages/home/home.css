@@ -10,7 +10,7 @@
 #StartGameButton {
     margin:0px;
     padding:10px 15px;
-    background-image: url('/images/btn_play_N.png')
+    background-color:blue;
     color:white;
     font-size:20px;
 }

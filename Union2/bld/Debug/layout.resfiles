@@ -1,16 +1,10 @@
 css\default.css
 default.html
-images\bg_multiplayer_score.png
-images\btn_play_N.png
-images\btn_play_P.png
-images\btn_score_N.png
-images\btn_score_P.png
 images\logo.png
 images\smalllogo.png
 images\splashscreen.png
 images\storelogo.png
 images\theme1.png
-images\theme2.png
 js\default.js
 js\GameManager.js
 js\Level.js

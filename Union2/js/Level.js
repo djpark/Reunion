@@ -79,7 +79,6 @@ Level.prototype.CenterBoard = function () {
     var gameContainerWidth = this._theme.TileWidth * this._width + (this._width - 1) * TILE_PADDING;
     var gameContainerHeight = this._theme.TileHeight * this._height + (this._height - 1) * TILE_PADDING;
 
-
     $("#gameContainer").css("marginLeft", -gameContainerWidth / 2 + "px");
     $("#gameContainer").css("marginTop", -gameContainerHeight / 2 + "px");
 };

@@ -19,3 +19,12 @@
 	top: 50%;
 	left: 50%;
 }
+
+#GameClock {
+    color: orange;
+    font-size:xx-large;
+    font-family: Consolas;
+    position:absolute;
+    right:0px;
+    top:0px;
+}

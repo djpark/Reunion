@@ -15,6 +15,9 @@ var CURRENT_LEVEL;
             var theme = new Theme("/images/theme2.png", 7/*numRows*/, 5/*numCols*/, 84, 104);
             CURRENT_LEVEL = new Level(10, 6, theme);
             CURRENT_LEVEL.Begin();
+
+            var gameClock = new GameClock($("#GameClock"), 3, function () { });
+            gameClock.StartCounting();
         },
 
         unload: function () {

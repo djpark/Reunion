@@ -1,3 +1,14 @@
-﻿.scoreboard p {
-    margin-left: 120px;
+﻿#scoreboardContainer {
+    width:100%;
+    text-align:center;
+}
+
+#scoreboard {
+    width:500px;
+    background-color:white;
+    color:white;
+}
+
+#scoreboard p {
+    color:black;
 }

@@ -44,5 +44,3 @@ GameManager.prototype.AddGameEntry = function (timeElapsed, numberOfMoves) {
         return Windows.Storage.FileIO.writeTextAsync(sampleFile, gameDataSerialized);
     });
 };
-
-

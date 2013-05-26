@@ -3,23 +3,43 @@
 }
 
 .ButtonContainer {
+    width:auto;
+    height:208px;
+}
+
+.PageBackground {
+    width:auto;
+    height:497px;
+}
+
+.ButtonText {
     width:744px;
-    height: 208px;
+    height:208px;
+    padding-top:20px;
+    padding-left:180px;
+    font-size:50px;
+    color:#fff;
 }
 
 #StartGameButton {
-    margin:0px;
-    padding:10px 15px;
-    color:white;
-    font-size:20px;
+    margin:10px;
+    background-image:url('/images/btn_play_N.png');
+    background-repeat:no-repeat;
 }
 
 #ScoreBoardButton {
-    margin:0px;
-    padding:10px 15px;
-    color:white;
-    font-size:20px;
-}|
+    margin:10px;
+    background-image:url('/images/btn_score_N.png');
+    background-repeat:no-repeat;
+}
+
+ #HomeBackground {
+    margin-top:150px;
+    padding-top:60px;
+    background-image:url('/images/bg_multiplayer_score.png');
+    background-repeat:no-repeat;
+    background-position-x:200px;
+}
 
 @media screen and (-ms-view-state: snapped) {
     .homepage section[role=main] {

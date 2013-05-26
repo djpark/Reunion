@@ -50,7 +50,7 @@
                 // Append the game data to the scoreboard
                 for (var i = 0; i < scores.length; i++) {
                     var x = document.createElement("p");
-                    $(x).html("<b>Time Elapsed:</b> " + scores[i].timeElapsed + " <b>Number Of Moves:</b> " + scores[i].numberOfMoves)
+                    $(x).html("<b>Number Of Moves:</b> " + scores[i].numberOfMoves + ", <b>Time Elapsed:</b> " + scores[i].timeElapsed + " sec")
                         .appendTo("#scoreboard");
                 }
             }, function () {

@@ -6,6 +6,7 @@ images\splashscreen.png
 images\storelogo.png
 images\theme1.png
 js\default.js
+js\GameManager.js
 js\Level.js
 js\navigator.js
 js\tile.js

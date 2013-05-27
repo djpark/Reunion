@@ -30,7 +30,7 @@ GameClock.prototype.UpdateClock = function () {
 
     $(this._container).text(minutes + ":" + secondsString);
 
-    if (this._secondsRemaining == 0)
+    if (this._secondsRemaining <= 0)
     {
         clearInterval(this._intervalId);
         this._onComplete();

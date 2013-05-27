@@ -16,7 +16,8 @@ var CURRENT_LEVEL;
             CURRENT_LEVEL = new Level(2, 2, theme);
             CURRENT_LEVEL.Begin();
 
-            var gameClock = new GameClock($("#GameClock"), 3, function () { });
+            var gameClock = new GameClock($("#GameClock"), 3/*minutes*/, function () { CURRENT_LEVEL.GameOver(); });
+
             gameClock.StartCounting();
         },
 

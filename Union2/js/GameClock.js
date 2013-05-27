@@ -32,9 +32,16 @@ GameClock.prototype.UpdateClock = function () {
 
     if (this._secondsRemaining <= 0)
     {
-        clearInterval(this._intervalId);
+        this.Stop();
         this._onComplete();
     }
 
     this._secondsRemaining--;
 };
+
+/**
+ * Stops the clock
+ */
+GameClock.prototype.Stop = function () {
+    clearInterval(this._intervalId);
+}

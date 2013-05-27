@@ -124,7 +124,7 @@ Level.prototype.OnClick = function (tileId) {
         this.SelectedTiles = new Array();
 
         if (this.IsGameOver()) {
-            $('#pagetitle').text("RICHARD PARKER MOTHERFUCKER");
+            this.GameOver();
         };
     }
     // We don't have a match
@@ -225,3 +225,7 @@ Level.prototype.ShuffleBoard = function () {
         shuffleBoard[randomPosition] = true;
     }
 };
+
+Level.prototype.GameOver = function () {
+    WinJS.Navigation.navigate("/pages/scoreboard/scoreboard.html");
+}

@@ -43,7 +43,8 @@ var CURRENT_LEVEL;
         },
 
         unload: function () {
-            CURRENT_LEVEL._gameClock.Stop();
+            if (CURRENT_LEVEL != null)
+                CURRENT_LEVEL._gameClock.Stop();
             // TODO: Respond to navigations away from this page.
         },
 

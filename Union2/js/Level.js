@@ -137,6 +137,9 @@ Level.prototype.OnClick = function (tileId) {
         // Clean out your current selection
         this.SelectedTiles = new Array();
 
+        // play sound
+        $('#audioComplete')[0].play();
+
         if (this.IsGameOver()) {
             this.GameOver();
         };

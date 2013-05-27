@@ -18,7 +18,10 @@ var Tile = function (value, theme, tileId) {
     // This tile has been completed.
     this._complete = false;
 
+    // The ID of this tile
     this._tileId = tileId;
+
+    this._colorIndex = Math.floor(Math.random() * (CARD_COLORS.length));
 };
 
 /**
@@ -27,13 +30,12 @@ var Tile = function (value, theme, tileId) {
 Tile.prototype.CreateDiv = function()
 {
     var x = document.createElement("div");
-    var colorIndex = Math.floor(Math.random() * (CARD_COLORS.length));
 
     $(x)
         .width(this._theme.Width + "px")
         .height(this._theme.Height + "px")
         .addClass("tile")
-        .css("background-color", CARD_COLORS[colorIndex])
+        .css("background-color", CARD_COLORS[this._colorIndex])
         .css("background-image", "url(" + this._theme.ImageUrl + ")")
         .css("width", this._theme.TileWidth + "px")
         .css("height", this._theme.TileHeight + "px")
@@ -57,10 +59,13 @@ Tile.prototype.Flip = function() {
     if (this._flipped) {
         $("#" + this._tileId).css("background-position", this._theme.GetOffset(this._value));
         $("#" + this._tileId).css("transform", "rotateY(180deg) scaleX(-1)");
+
+        //$("#" + this._tileId).css("background-color", "#000000");
     }
     else {
         $("#" + this._tileId).css("background-position", "0px 0px");
         $("#" + this._tileId).css("transform", "rotateY(0deg) scaleX(1)");
+        //$("#" + this._tileId).css("background-color", CARD_COLORS[this._colorIndex]);
     }
 };
 

@@ -55,6 +55,7 @@
     </AppxManifest>
     <Content Include="css\default.css" />
     <Content Include="images\bg_multiplayer_score.png" />
+    <Content Include="images\bg_scorescreen.png" />
     <Content Include="images\btn_play_N.png" />
     <Content Include="images\btn_score_N.png" />
     <Content Include="images\logo.png" />

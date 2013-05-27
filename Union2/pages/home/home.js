@@ -14,7 +14,7 @@
         linkClickEventHandler: function (eventInfo) {
             eventInfo.preventDefault();
             $("#" + eventInfo.currentTarget.children[0].attributes[1].nodeValue).css("transform", "scaleX(0.9) scaleY(0.9)");
-            $('#audioClick')[0].play();
+            $('#audioMenu')[0].play();
             var link = eventInfo.currentTarget;
             setTimeout(function(){WinJS.Navigation.navigate(link.href);},50);
         }

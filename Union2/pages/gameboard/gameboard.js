@@ -12,7 +12,7 @@ var CURRENT_LEVEL;
         // populates the page elements with the app's data.
         ready: function (element, options) {
 
-            var theme = new Theme("/images/theme2.png", 7/*numRows*/, 5/*numCols*/, 84, 104);
+            var theme = new Theme("/images/theme3.png", 7/*numRows*/, 5/*numCols*/, 84, 104);
 
             // If you decide to change this stuff, its really important that you have an even number of tiles.
             // Don't do things like a 3x3 board (9 tiles) can't be matched.

@@ -65,6 +65,7 @@
     <Content Include="images\storelogo.png" />
     <Content Include="images\theme1.png" />
     <Content Include="images\theme2.png" />
+    <Content Include="images\theme3.png" />
     <Content Include="js\default.js" />
     <Content Include="js\GameClock.js" />
     <Content Include="js\GameManager.js" />

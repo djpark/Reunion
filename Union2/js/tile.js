@@ -59,13 +59,12 @@ Tile.prototype.Flip = function() {
     if (this._flipped) {
         $("#" + this._tileId).css("background-position", this._theme.GetOffset(this._value));
         $("#" + this._tileId).css("transform", "rotateY(180deg) scaleX(-1)");
-
-        //$("#" + this._tileId).css("background-color", "#000000");
+        $("#" + this._tileId).css("background-color", "#e6e6e6");
     }
     else {
         $("#" + this._tileId).css("background-position", "0px 0px");
         $("#" + this._tileId).css("transform", "rotateY(0deg) scaleX(1)");
-        //$("#" + this._tileId).css("background-color", CARD_COLORS[this._colorIndex]);
+        $("#" + this._tileId).css("background-color", CARD_COLORS[this._colorIndex]);
     }
 };
 

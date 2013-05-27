@@ -20,7 +20,7 @@ var CURRENT_LEVEL;
             // Easy is a 4x4 board = 16 tiles = 8 pairs
             $("#easyButton").click(function () {
                 $("#difficultySelector").hide();
-                CURRENT_LEVEL = new Level(4/*width*/, 4/*height*/, theme, 4/*time*/);
+                CURRENT_LEVEL = new Level(4/*width*/, 4/*height*/, theme, 1/*time*/);
                 CURRENT_LEVEL.Begin();
             });
 
@@ -40,6 +40,7 @@ var CURRENT_LEVEL;
         },
 
         unload: function () {
+            CURRENT_LEVEL._gameClock.Stop();
             // TODO: Respond to navigations away from this page.
         },
 

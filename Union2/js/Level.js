@@ -238,6 +238,5 @@ Level.prototype.ShuffleBoard = function () {
 };
 
 Level.prototype.GameOver = function () {
-    this._gameClock.Stop();
     WinJS.Navigation.navigate("/pages/scoreboard/scoreboard.html");
 }

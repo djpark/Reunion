@@ -7,7 +7,7 @@
 var TILE_PADDING = 10;
 var TILE_FLIP_DELAY = 1000;
 
-var Level = function (width, height, theme) {
+var Level = function (width, height, theme, timeLimit) {
     // An array mapping TileID (string) to Tile.
     this.GameBoard = new Array();
 
@@ -34,6 +34,12 @@ var Level = function (width, height, theme) {
 
     // Flag to keep track of whether or not game is started
     this._gameStarted = false;
+
+    // The game clock.
+    this._gameClock = false;
+
+    // The number of minutes for this game.
+    this._timeLimit = timeLimit;
 };
 
 Level.prototype.Begin = function () {
@@ -50,6 +56,10 @@ Level.prototype.Begin = function () {
 
     this.CenterBoard();
     this.ShuffleBoard();
+
+    this._gameClock = new GameClock($("#GameClock"), this._timeLimit, function () { CURRENT_LEVEL.GameOver(); });
+    this._gameClock.UpdateClock();
+    this._gameClock.StartCounting();
 };
 
 /**

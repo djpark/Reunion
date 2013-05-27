@@ -11,14 +11,29 @@ var CURRENT_LEVEL;
         // This function is called whenever a user navigates to this page. It
         // populates the page elements with the app's data.
         ready: function (element, options) {
-            // TODO: Initialize the page here.
+
             var theme = new Theme("/images/theme2.png", 7/*numRows*/, 5/*numCols*/, 84, 104);
-            CURRENT_LEVEL = new Level(2, 2, theme);
-            CURRENT_LEVEL.Begin();
+            $("#easyButton").click(function () {
+                $("#difficultySelector").hide();
+                CURRENT_LEVEL = new Level(4/*width*/, 4/*height*/, theme, 4/*time*/);
+                CURRENT_LEVEL.Begin();
+            });
 
-            var gameClock = new GameClock($("#GameClock"), 3/*minutes*/, function () { CURRENT_LEVEL.GameOver(); });
+            $("#mediumButton").click(function () {
+                $("#difficultySelector").hide();
+                CURRENT_LEVEL = new Level(6/*width*/, 6/*height*/, theme, 4/*time*/);
+                CURRENT_LEVEL.Begin();
+            });
 
-            gameClock.StartCounting();
+            $("#hardButton").click(function () {
+                $("#difficultySelector").hide();
+                CURRENT_LEVEL = new Level(10/*width*/, 6/*height*/, theme, 4/*time*/);
+                CURRENT_LEVEL.Begin();
+            });
+            // TODO: Initialize the page here.
+          //  
+          //  CURRENT_LEVEL = new Level(2, 2, theme, 3/*timeLimit*/);
+           // CURRENT_LEVEL.Begin();
         },
 
         unload: function () {

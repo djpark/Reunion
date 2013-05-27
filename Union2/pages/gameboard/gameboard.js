@@ -13,27 +13,30 @@ var CURRENT_LEVEL;
         ready: function (element, options) {
 
             var theme = new Theme("/images/theme2.png", 7/*numRows*/, 5/*numCols*/, 84, 104);
+
+            // If you decide to change this stuff, its really important that you have an even number of tiles.
+            // Don't do things like a 3x3 board (9 tiles) can't be matched.
+
+            // Easy is a 4x4 board = 16 tiles = 8 pairs
             $("#easyButton").click(function () {
                 $("#difficultySelector").hide();
                 CURRENT_LEVEL = new Level(4/*width*/, 4/*height*/, theme, 4/*time*/);
                 CURRENT_LEVEL.Begin();
             });
 
+            // Medium is a 6x6 board = 36 tiles = 18 pairs
             $("#mediumButton").click(function () {
                 $("#difficultySelector").hide();
                 CURRENT_LEVEL = new Level(6/*width*/, 6/*height*/, theme, 4/*time*/);
                 CURRENT_LEVEL.Begin();
             });
 
+            // Hard is a 10x6 board = 60 tiles = 30 pairs
             $("#hardButton").click(function () {
                 $("#difficultySelector").hide();
                 CURRENT_LEVEL = new Level(10/*width*/, 6/*height*/, theme, 4/*time*/);
                 CURRENT_LEVEL.Begin();
             });
-            // TODO: Initialize the page here.
-          //  
-          //  CURRENT_LEVEL = new Level(2, 2, theme, 3/*timeLimit*/);
-           // CURRENT_LEVEL.Begin();
         },
 
         unload: function () {

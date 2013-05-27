@@ -44,13 +44,14 @@ var Level = function (width, height, theme, timeLimit) {
 
 Level.prototype.Begin = function () {
     var tileId = 0;
+    var pictureId = 0;
     for (var i = 0; i < this._width; i++) {
         for (var j = 0; j < this._height; j++) {
-            var tile = new Tile(i + 1, this._theme, tileId++);
+            pictureId += (tileId + 1)% 2;
+            var tile = new Tile(pictureId, this._theme, tileId++);
             var div = tile.CreateDiv();
             $(div).appendTo("#gameContainer");
             CURRENT_LEVEL.GameBoard[div.id] = tile;
-            tile.PositionDiv(i, j);
         }
     }
 

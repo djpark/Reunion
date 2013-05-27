@@ -99,6 +99,7 @@ Level.prototype.CenterBoard = function () {
  * Takes in the ID of the tile which was most recently clicked.
  */
 Level.prototype.OnClick = function (tileId) {
+
     // Check if game started and grab the start time
     if (!this._gameStarted) {
         this._gameStarted = true;
@@ -108,6 +109,8 @@ Level.prototype.OnClick = function (tileId) {
     // Don't do anything if we're waiting to flip back
     if (this._threadBusy)
         return;
+    else
+        $('#audioClick')[0].play();
     
     // Don't do anything if we clicked a completed tile.
     if (this.GameBoard[tileId]._complete)

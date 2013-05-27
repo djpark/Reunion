@@ -83,6 +83,7 @@
     <Content Include="pages\scoreboard\scoreboard.css" />
     <Content Include="pages\scoreboard\scoreboard.html" />
     <Content Include="pages\scoreboard\scoreboard.js" />
+    <Content Include="sounds\click.mp3" />
     <None Include="Union2_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

@@ -21,7 +21,7 @@ var CURRENT_LEVEL;
             $("#easyButton").click(function () {
                 $('#audioMenu')[0].play();
                 $("#difficultySelector").hide();
-                CURRENT_LEVEL = new Level(2/*width*/, 2/*height*/, theme, 4/*time*/);
+                CURRENT_LEVEL = new Level("easy"/*mode*/, 1/*width*/, 2/*height*/, theme, 0.1/*time*/);
                 CURRENT_LEVEL.Begin();
             });
 
@@ -29,7 +29,7 @@ var CURRENT_LEVEL;
             $("#mediumButton").click(function () {
                 $('#audioMenu')[0].play();
                 $("#difficultySelector").hide();
-                CURRENT_LEVEL = new Level(6/*width*/, 6/*height*/, theme, 4/*time*/);
+                CURRENT_LEVEL = new Level("medium"/*mode*/, 6/*width*/, 6/*height*/, theme, 4/*time*/);
                 CURRENT_LEVEL.Begin();
             });
 
@@ -37,7 +37,7 @@ var CURRENT_LEVEL;
             $("#hardButton").click(function () {
                 $('#audioMenu')[0].play();
                 $("#difficultySelector").hide();
-                CURRENT_LEVEL = new Level(10/*width*/, 6/*height*/, theme, 4/*time*/);
+                CURRENT_LEVEL = new Level("hard"/*mode*/, 10/*width*/, 6/*height*/, theme, 4/*time*/);
                 CURRENT_LEVEL.Begin();
             });
         },

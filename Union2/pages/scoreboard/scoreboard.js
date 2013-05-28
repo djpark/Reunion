@@ -12,12 +12,42 @@
             loadGamesFromLocalFolder();
 
             // Add the click handlers for Clear Scores
-            $("#clearScoreBoardButton").click(function () {
+            $("#resetScoresButton").click(function () {
                 var gameManager = new GameManager();
                 gameManager.ClearGames();
 
-                // TO FIX: Trying to refresh the games after clear games causes an async access error.
-                //loadGamesFromLocalFolder();
+                // Clear the current score board
+                $("#easyScoreboard").empty();
+                $("#mediumScoreboard").empty();
+                $("#hardScoreboard").empty();
+
+                // Add in empty headers and data
+                var easyHeader = document.createElement("h3");
+                $(easyHeader).html("EASY").appendTo("#easyScoreboard");
+
+                var mediumHeader = document.createElement("h3");
+                $(mediumHeader).html("MEDIUM").appendTo("#mediumScoreboard");
+
+                var hardHeader = document.createElement("h3");
+                $(hardHeader).html("HARD").appendTo("#hardScoreboard");
+
+                // Append empty game data to the scoreboard
+                for (var i = 1; i <= 10; i++) {
+                    var x = document.createElement("div");
+                    x.className = "score";
+                    $(x).html(i + ". ")
+                        .appendTo("#easyScoreboard");
+
+                    var y = document.createElement("div");
+                    y.className = "score";
+                    $(y).html(i + ". ")
+                        .appendTo("#mediumScoreboard");
+
+                    var z = document.createElement("div");
+                    z.className = "score";
+                    $(z).html(i + ". ")
+                        .appendTo("#hardScoreboard");
+                }
             });
         },
 
@@ -47,11 +77,73 @@
 
                 var scores = JSON.parse(gotscores);
 
-                // Append the game data to the scoreboard
+                var easyGameScores = new Array();
+                var mediumGameScores = new Array();
+                var hardGameScores = new Array();
+
+                // Split out game data to modes so we can append to appropriate divs
                 for (var i = 0; i < scores.length; i++) {
-                    var x = document.createElement("p");
-                    $(x).html("<b>Number Of Moves:</b> " + scores[i].numberOfMoves + ", <b>Time Elapsed:</b> " + scores[i].timeElapsed + " sec")
-                        .appendTo("#scoreboard");
+                    if (scores[i].gameMode == "easy") {
+                        easyGameScores.push(scores[i]);
+                    } else if (scores[i].gameMode = "medium") {
+                        mediumGameScores.unshift(scores[i]);
+                    } else if (scores[i].push = "hard") {
+                        hardGameScores.push(scores[i]);
+                    }
+                }
+
+                // Append the easy game data to the scoreboard
+                for (var i = 1; i <= 10; i++) {
+                    // If there's game data, then append it
+                    if (i - 1 < easyGameScores.length) {
+                        var x = document.createElement("div");
+                        x.className = "score";
+                        $(x).html(i + ". " + "Cleared - " + easyGameScores[i - 1].timeElapsed + " sec (" + easyGameScores[i - 1].numberOfMoves + " moves)")
+                            .appendTo("#easyScoreboard");
+                    }
+                    // Otherwise append an empty cell
+                    else {
+                        var x = document.createElement("div");
+                        x.className = "score";
+                        $(x).html(i + ". ")
+                            .appendTo("#easyScoreboard");
+                    }
+                }
+
+                // Append the medium game data to the scoreboard
+                for (var i = 1; i <= 10; i++) {
+                    // If there's game data, then append it
+                    if (i - 1 < mediumGameScores.length) {
+                        var x = document.createElement("div");
+                        x.className = "score";
+                        $(x).html(i + ". " + "Cleared - " + mediumGameScores[i - 1].timeElapsed + " sec (" + mediumGameScores[i - 1].numberOfMoves + " moves)")
+                            .appendTo("#mediumScoreboard");
+                    }
+                        // Otherwise append an empty cell
+                    else {
+                        var x = document.createElement("div");
+                        x.className = "score";
+                        $(x).html(i + ". ")
+                            .appendTo("#mediumScoreboard");
+                    }
+                }
+
+                // Append the hard game data to the scoreboard
+                for (var i = 1; i <= 10; i++) {
+                    // If there's game data, then append it
+                    if (i - 1 < hardGameScores.length) {
+                        var x = document.createElement("div");
+                        x.className = "score";
+                        $(x).html(i + ". " + "Cleared - " + hardGameScores[i - 1].timeElapsed + " sec (" + hardGameScores[i - 1].numberOfMoves + " moves)")
+                            .appendTo("#hardScoreboard");
+                    }
+                        // Otherwise append an empty cell
+                    else {
+                        var x = document.createElement("div");
+                        x.className = "score";
+                        $(x).html(i + ". ")
+                            .appendTo("#hardScoreboard");
+                    }
                 }
             }, function () {
 

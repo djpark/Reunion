@@ -15,7 +15,7 @@ var GameManager = function () {
  * Game
  * A class represents a game.
  */
-var Game = function (numberOfMoves, timeElapsed) {
+var Game = function (numberOfMoves, timeElapsed, gameMode) {
     // Stores the date of when the game was played
     this.datePlayed = new Date();
 
@@ -24,6 +24,9 @@ var Game = function (numberOfMoves, timeElapsed) {
 
     // Stores the number of moves
     this.numberOfMoves = numberOfMoves;
+
+    // Stores the game mode
+    this.gameMode = gameMode;
 }
 
 /**
@@ -45,8 +48,8 @@ GameManager.prototype.ClearGames = function () {
  * AddGameEntry
  * Add game detail to the GamesPlayed array
  */
-GameManager.prototype.AddGameEntry = function (numberOfMoves, timeElapsed) {
-    var game = new Game(numberOfMoves, timeElapsed);
+GameManager.prototype.AddGameEntry = function (numberOfMoves, timeElapsed, gameMode) {
+    var game = new Game(numberOfMoves, timeElapsed, gameMode);
     this.GamesPlayed.push(game);
 
     var gameDataSerialized = JSON.stringify(this.GamesPlayed);
@@ -61,20 +64,32 @@ GameManager.prototype.AddGameEntry = function (numberOfMoves, timeElapsed) {
             return Windows.Storage.FileIO.readTextAsync(sampleFile);
         })
         .done(function (gotscores) {
-            // JSON.parse bombs out if gotscores is ever empty so convert to empty array instead
+            // JSON.parse bombs out if gotscores is an empty string so convert to empty array instead
             if (gotscores == "")
                 gotscores = "[]";
 
             var scores = new Array();
             var results = JSON.parse(gotscores);
+            var gameInserted = false;
 
-            // Then iterate through the games and push into our temp array
-            for (var i = 0; i < results.length; i++) {
-                scores.push(results[i]);
+            // Then iterate through the games and push into temp array.  
+            // We're also only storing 30 max entries (10 max for each game mode)
+            for (var i = 0; i < results.length && i < 30; i++) {
+                // If game modes match and the new game has a better elapsed time + hasn't been inserted, add in the new game at that position
+                if (results[i].gameMode == game.gameMode && game.timeElapsed < results[i].timeElapsed && !gameInserted) {
+                    scores.push(game);
+                    scores.push(results[i]);
+                    gameInserted = true;
+                // Otherwise just push the game at current position
+                } else {
+                    scores.push(results[i]);
+                }
             }
 
-            // Push the latest game
-            scores.push(game);
+            // Handle case where there are no scores in the gamedata file or game hasn't been inserted
+            if (results.length == 0 || !gameInserted) {
+                scores.push(game);
+            }
 
             // Then serialize the results
             var gameDataSerialized = JSON.stringify(scores);
@@ -101,7 +116,6 @@ GameManager.prototype.AddGameEntry = function (numberOfMoves, timeElapsed) {
             localFolder.createFileAsync("gamedata.txt", Windows.Storage.CreationCollisionOption.replaceExisting)
             .then(function (sampleFile) {
                 WinJS.Navigation.navigate("/pages/scoreboard/scoreboard.html");
-
                 return Windows.Storage.FileIO.appendTextAsync(sampleFile, gameDataSerialized);
             });
         });

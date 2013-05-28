@@ -7,12 +7,15 @@
 var TILE_PADDING = 10;
 var TILE_FLIP_DELAY = 1000;
 
-var Level = function (width, height, theme, timeLimit) {
+var Level = function (mode, width, height, theme, timeLimit) {
     // An array mapping TileID (string) to Tile.
     this.GameBoard = new Array();
 
     // An array of all the tiles you have currently selected.
     this.SelectedTiles = new Array();
+
+    // The mode of this level
+    this._mode = mode;
 
     // The width (in number of tiles) of this level.
     this._width = width;
@@ -40,6 +43,12 @@ var Level = function (width, height, theme, timeLimit) {
 
     // The number of minutes for this game.
     this._timeLimit = timeLimit;
+
+    // Stores whether or not board is cleared
+    this._cleared = false;
+
+    // Stores the number of matches made
+    this._numberOfMatches = 0;
 };
 
 Level.prototype.Begin = function () {
@@ -58,9 +67,17 @@ Level.prototype.Begin = function () {
     this.CenterBoard();
     this.ShuffleBoard();
 
-    this._gameClock = new GameClock($("#GameClock"), this._timeLimit, function () { CURRENT_LEVEL.GameOver(); });
+    this._gameClock = new GameClock($("#GameClock"), this._timeLimit, function () {
+        CURRENT_LEVEL.GameOver();
+    });
     this._gameClock.UpdateClock();
     this._gameClock.StartCounting();
+
+    // Check if game started and grab the start time
+    if (!this._gameStarted) {
+        this._gameStarted = true;
+        this._startGameTimeStamp = new Date();
+    }
 };
 
 /**
@@ -99,13 +116,6 @@ Level.prototype.CenterBoard = function () {
  * Takes in the ID of the tile which was most recently clicked.
  */
 Level.prototype.OnClick = function (tileId) {
-
-    // Check if game started and grab the start time
-    if (!this._gameStarted) {
-        this._gameStarted = true;
-        this._startGameTimeStamp = new Date();
-    }
-
     // Don't do anything if we're waiting to flip back
     if (this._threadBusy)
         return;
@@ -193,7 +203,12 @@ Level.prototype.AreSelectedTilesSame = function () {
         previousValue = currentValue;
         selectionSize++;
     }
-    return selectionSize > 1 && matchingTiles;
+
+    var tilesAreTheSame = selectionSize > 1 && matchingTiles;
+    if (tilesAreTheSame)
+        this._numberOfMatches++;
+
+    return tilesAreTheSame;
 };
 
 Level.prototype.IsGameOver = function () {
@@ -204,13 +219,7 @@ Level.prototype.IsGameOver = function () {
             return false
     }
 
-    // Figure out how much time has elapsed since start of this game
-    var now = new Date();
-    var elapsedTime = Math.ceil(now.getTime() - this._startGameTimeStamp.getTime()) / 1000;
-
-    // Register the game stats to the game manager
-    var gameManager = new GameManager();
-    gameManager.AddGameEntry(this._numberOfMoves, elapsedTime);
+    this._cleared = true;
 
     //if we're here it's because the game is complete
     return true;
@@ -244,5 +253,22 @@ Level.prototype.ShuffleBoard = function () {
 };
 
 Level.prototype.GameOver = function () {
-    //WinJS.Navigation.navigate("/pages/scoreboard/scoreboard.html");
+    // TODO: Need to plumb concept of "# of matches" throughout game and handle in scoreboard
+    // For now, we'll just add scores for completed games to the scoreboard
+    if (this._cleared) {
+        // Figure out how much time has elapsed since start of this game
+        var now = new Date();
+        var elapsedTimeTemp = Math.ceil(now.getTime() - this._startGameTimeStamp.getTime()) / 1000;
+        var elapsedTime = Math.round(elapsedTimeTemp);
+
+        // Register the game stats to the game manager
+        var gameManager = new GameManager();
+        gameManager.AddGameEntry(this._numberOfMoves, elapsedTime, this._mode);
+        // TODO: Handling the navigation to scoreboard in AddGameEntry now which isn't very pretty.  Figure out how to move logic straight into GameOver
+        //WinJS.Navigation.navigate("/pages/scoreboard/scoreboard.html");
+    }
+    // Otherwise, just navigate to the scoreboard and don't add any scores
+    else {
+        WinJS.Navigation.navigate("/pages/scoreboard/scoreboard.html");
+    }
 }

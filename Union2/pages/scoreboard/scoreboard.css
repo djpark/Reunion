@@ -1,25 +1,61 @@
 ﻿#scoreboardContainer {
-    width:100%;
-    text-align:left;
+	position:fixed;
+    top: 50%;
+	left: 50%;
+    margin-left:-550px;
+    margin-top:-250px;
+    width:1100px;
+    height:500px;
+    background-color:rgba(0,0,0,0.5);
+    border-radius: 10px;
+    border: none;
+    color:white;
+    padding:10px 20px;
 }
 
 #scoreboard {
-    margin-left:120px;
-    width:800px;
-    background-color:white;
+    margin:30px 10px 10px 10px;
 }
 
-#scoreboard p {
-    color:black;
-    font-size:25px;
+#scoreboard h3 {
+    font-size:30px;
+    font-weight:normal;
+    text-align:center;
+    margin-bottom:10px;
 }
 
-#clearScoreBoardButton {
-    margin-left:120px;
-    background-color:blue;
+#easyScoreboard {
+    float:left;
+    width: 360px;
+}
+
+#mediumScoreboard {
+    float:left;
+    width: 360px;
+}
+
+#hardScoreboard {
+    float:left;
+    width: 360px;
+}
+
+.score {
+    font-size:20px;
+}
+
+#resetScoresButton {
+    position:absolute;
+    bottom:15px;
+    right:50px;
     color:white;
     width:200px;
     height:50px;
-    font-size:30px;
-    font-weight:bold;
+    border:2px solid white;
+    border-radius:10px;
+    text-align:center;
+}
+
+#resetScoresButton h2 {
+    padding:0px;
+    margin-top:5px;
 }

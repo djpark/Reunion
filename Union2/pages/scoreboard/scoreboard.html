@@ -18,13 +18,18 @@
         <header aria-label="Header content" role="banner">
             <button class="win-backbutton" aria-label="Back" disabled type="button"></button>
             <h1 class="titlearea win-type-ellipsis">
-                <span class="pagetitle">Scoreboard</span>
+                <span class="pagetitle" id="pagetitle"><img src="..\..\images\main_logo.png" /></span>
             </h1>
         </header>
         <section aria-label="Main content" role="main">
             <div id="scoreboardContainer">
-                <div id="scoreboard"></div>
-                <div id="clearScoreBoardButton"><p>Clear Scores</p></div>
+                <h1 id="scoreboardHeader">Your High Scores</h1>
+                <div id="scoreboard">
+                    <div id="easyScoreboard"><h3>EASY</h3></div>
+                    <div id="mediumScoreboard"><h3>MEDIUM</h3></div>
+                    <div id="hardScoreboard"><h3>HARD</h3></div>
+                </div>
+                <div id="resetScoresButton"><h2>Reset</h2></div>
             </div>
         </section>
     </div>

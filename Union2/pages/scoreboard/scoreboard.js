@@ -11,9 +11,8 @@
             
             loadGamesFromLocalFolder();
 
-            // Add the click handlers for Clear Scores
+            // Add the click handlers for ClearGames
             $("#resetScoresButton").click(function () {
-
                 // play sound
                 $('#audioClick')[0].play();
 
@@ -80,19 +79,32 @@
                     gotscores = "[]";
 
                 var scores = JSON.parse(gotscores);
+                var latestGameDate = "";
+                var tempDate = new Date();
 
                 var easyGameScores = new Array();
                 var mediumGameScores = new Array();
                 var hardGameScores = new Array();
 
                 // Split out game data to modes so we can append to appropriate divs
+                // Also keep track of latest game so that we can highlight it in the scoreboard
                 for (var i = 0; i < scores.length; i++) {
                     if (scores[i].gameMode == "easy") {
                         easyGameScores.push(scores[i]);
-                    } else if (scores[i].gameMode = "medium") {
-                        mediumGameScores.unshift(scores[i]);
-                    } else if (scores[i].push = "hard") {
+                    } else if (scores[i].gameMode == "medium") {
+                        mediumGameScores.push(scores[i]);
+                    } else if (scores[i].gameMode == "hard") {
                         hardGameScores.push(scores[i]);
+                    }
+
+                    // Update latestGameTime to keep track of latest game
+                    tempDate = new Date(scores[i].datePlayed);
+
+                    if (latestGameDate == "") {
+                        latestGameDate = tempDate;
+                    }
+                    else if (latestGameDate < tempDate) {
+                        latestGameDate = tempDate;
                     }
                 }
 
@@ -104,6 +116,12 @@
                         x.className = "score";
                         $(x).html(i + ". " + "Cleared - " + easyGameScores[i - 1].timeElapsed + " sec (" + easyGameScores[i - 1].numberOfMoves + " moves)")
                             .appendTo("#easyScoreboard");
+
+                        // Check to see if the current date matches the latestGameDate.  If so, add the latestScore class
+                        tempDate = new Date(easyGameScores[i - 1].datePlayed);
+
+                        if (tempDate.getTime() == latestGameDate.getTime())
+                            $(x).addClass("latestScore");
                     }
                     // Otherwise append an empty cell
                     else {
@@ -112,6 +130,9 @@
                         $(x).html(i + ". ")
                             .appendTo("#easyScoreboard");
                     }
+
+                    // Add in class for adding striped pattern to list of high scores
+                    (i % 2 == 0) ? $(x).addClass("evenRow") : $(x).addClass("oddRow");
                 }
 
                 // Append the medium game data to the scoreboard
@@ -122,6 +143,12 @@
                         x.className = "score";
                         $(x).html(i + ". " + "Cleared - " + mediumGameScores[i - 1].timeElapsed + " sec (" + mediumGameScores[i - 1].numberOfMoves + " moves)")
                             .appendTo("#mediumScoreboard");
+
+                        // Check to see if the current date matches the latestGameDate.  If so, add the latestScore class
+                        tempDate = new Date(mediumGameScores[i - 1].datePlayed);
+
+                        if (tempDate.getTime() == latestGameDate.getTime())
+                            $(x).addClass("latestScore");
                     }
                         // Otherwise append an empty cell
                     else {
@@ -130,6 +157,9 @@
                         $(x).html(i + ". ")
                             .appendTo("#mediumScoreboard");
                     }
+
+                    // Add in class for adding striped pattern to list of high scores
+                    (i % 2 == 0) ? $(x).addClass("evenRow") : $(x).addClass("oddRow");
                 }
 
                 // Append the hard game data to the scoreboard
@@ -140,6 +170,12 @@
                         x.className = "score";
                         $(x).html(i + ". " + "Cleared - " + hardGameScores[i - 1].timeElapsed + " sec (" + hardGameScores[i - 1].numberOfMoves + " moves)")
                             .appendTo("#hardScoreboard");
+
+                        // Check to see if the current date matches the latestGameDate.  If so, add the latestScore class
+                        tempDate = new Date(hardGameScores[i - 1].datePlayed);
+
+                        if (tempDate.getTime() == latestGameDate.getTime())
+                            $(x).addClass("latestScore");
                     }
                         // Otherwise append an empty cell
                     else {
@@ -148,6 +184,9 @@
                         $(x).html(i + ". ")
                             .appendTo("#hardScoreboard");
                     }
+
+                    // Add in class for adding striped pattern to list of high scores
+                    (i % 2 == 0) ? $(x).addClass("evenRow") : $(x).addClass("oddRow");
                 }
             }, function () {
 

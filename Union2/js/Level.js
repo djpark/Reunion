@@ -151,7 +151,9 @@ Level.prototype.OnClick = function (tileId) {
         $('#audioComplete')[0].play();
 
         if (this.IsGameOver()) {
-            this.GameOver();
+            // letting final sound play
+            var thatGameOver = this;
+            setTimeout(function () { thatGameOver.GameOver(); }, 400);
         };
     }
     // We don't have a match

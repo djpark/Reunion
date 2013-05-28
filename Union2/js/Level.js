@@ -244,5 +244,5 @@ Level.prototype.ShuffleBoard = function () {
 };
 
 Level.prototype.GameOver = function () {
-    WinJS.Navigation.navigate("/pages/scoreboard/scoreboard.html");
+    //WinJS.Navigation.navigate("/pages/scoreboard/scoreboard.html");
 }

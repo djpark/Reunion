@@ -82,6 +82,7 @@ GameManager.prototype.AddGameEntry = function (numberOfMoves, timeElapsed) {
             // and write the new object back to the file
             localFolder.createFileAsync("gamedata.txt", Windows.Storage.CreationCollisionOption.replaceExisting)
             .then(function (sampleFile) {
+                WinJS.Navigation.navigate("/pages/scoreboard/scoreboard.html");
                 return Windows.Storage.FileIO.appendTextAsync(sampleFile, gameDataSerialized);
             });
         },
@@ -99,6 +100,8 @@ GameManager.prototype.AddGameEntry = function (numberOfMoves, timeElapsed) {
             // and write the new object back to the file
             localFolder.createFileAsync("gamedata.txt", Windows.Storage.CreationCollisionOption.replaceExisting)
             .then(function (sampleFile) {
+                WinJS.Navigation.navigate("/pages/scoreboard/scoreboard.html");
+
                 return Windows.Storage.FileIO.appendTextAsync(sampleFile, gameDataSerialized);
             });
         });

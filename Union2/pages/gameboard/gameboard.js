@@ -21,7 +21,7 @@ var CURRENT_LEVEL;
             $("#easyButton").click(function () {
                 $('#audioMenu')[0].play();
                 $("#difficultySelector").hide();
-                CURRENT_LEVEL = new Level("easy"/*mode*/, 1/*width*/, 2/*height*/, theme, 0.1/*time*/);
+                CURRENT_LEVEL = new Level("easy"/*mode*/, 4/*width*/, 4/*height*/, theme, 4/*time*/);
                 CURRENT_LEVEL.Begin();
             });
 

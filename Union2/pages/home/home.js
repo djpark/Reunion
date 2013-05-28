@@ -16,7 +16,7 @@
             $("#" + eventInfo.currentTarget.children[0].attributes[1].nodeValue).css("transform", "scaleX(0.9) scaleY(0.9)");
             $('#audioMenu')[0].play();
             var link = eventInfo.currentTarget;
-            setTimeout(function(){WinJS.Navigation.navigate(link.href);},50);
+            setTimeout(function(){WinJS.Navigation.navigate(link.href);},200);
         }
     });
 })();

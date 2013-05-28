@@ -19,7 +19,7 @@ var CURRENT_LEVEL;
 
             // Easy is a 4x4 board = 16 tiles = 8 pairs
             $("#easyButton").click(function () {
-                $('#audioMenu')[0].play();
+                $('#audioClick')[0].play();
                 $("#difficultySelector").hide();
                 CURRENT_LEVEL = new Level("easy"/*mode*/, 4/*width*/, 4/*height*/, theme, 4/*time*/);
                 CURRENT_LEVEL.Begin();
@@ -27,7 +27,7 @@ var CURRENT_LEVEL;
 
             // Medium is a 6x6 board = 36 tiles = 18 pairs
             $("#mediumButton").click(function () {
-                $('#audioMenu')[0].play();
+                $('#audioClick')[0].play();
                 $("#difficultySelector").hide();
                 CURRENT_LEVEL = new Level("medium"/*mode*/, 6/*width*/, 6/*height*/, theme, 4/*time*/);
                 CURRENT_LEVEL.Begin();
@@ -35,7 +35,7 @@ var CURRENT_LEVEL;
 
             // Hard is a 10x6 board = 60 tiles = 30 pairs
             $("#hardButton").click(function () {
-                $('#audioMenu')[0].play();
+                $('#audioClick')[0].play();
                 $("#difficultySelector").hide();
                 CURRENT_LEVEL = new Level("hard"/*mode*/, 10/*width*/, 6/*height*/, theme, 4/*time*/);
                 CURRENT_LEVEL.Begin();

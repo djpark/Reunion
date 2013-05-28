@@ -13,6 +13,10 @@
 
             // Add the click handlers for Clear Scores
             $("#resetScoresButton").click(function () {
+
+                // play sound
+                $('#audioClick')[0].play();
+
                 var gameManager = new GameManager();
                 gameManager.ClearGames();
 

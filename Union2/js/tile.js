@@ -84,8 +84,6 @@ Tile.prototype.Flip = function() {
 Tile.prototype.Complete = function () {
     this._complete = true;
     $("#" + this._tileId).css("opacity", "0");
-    $("#" + this._tileId).css("left", -window.outerWidth + "px");
-    $("#" + this._tileId).css("top", window.outerHeight + "px");
 };
 
 /**

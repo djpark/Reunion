@@ -247,8 +247,7 @@ Level.prototype.ShuffleBoard = function () {
 
         var top = Math.floor(i / this._width);
         var left = Math.floor(i % this._width);
-
-        this.GameBoard[randomPosition].PositionDiv(left, top);
+        this.GameBoard[randomPosition].RevealDiv(left, top);
 
         shuffleBoard[randomPosition] = true;
     }

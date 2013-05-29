@@ -40,12 +40,24 @@ Tile.prototype.CreateDiv = function()
         .css("width", this._theme.TileWidth + "px")
         .css("height", this._theme.TileHeight + "px")
         .css("position", "absolute")
+        .css("top", window.outerHeight + "px")
+        .css("left", window.outerWidth + "px")
         .attr("id", this._tileId)
         .click(function () {
             CURRENT_LEVEL.OnClick(this.id);
         });
-    this.PositionDiv(-2, -2);
+
     return x;
+};
+
+/**
+ * Some fun stuff in order to have the cards kinda slide in, we have to set the properties slightly after creation.
+ */
+Tile.prototype.RevealDiv = function(leftIndex, topIndex) {
+    var that = this;
+    setTimeout(function () {
+        that.PositionDiv(leftIndex, topIndex);
+    }, this._tileId * 15);
 };
 
 Tile.prototype.PositionDiv = function (leftIndex, topIndex) {
@@ -60,6 +72,7 @@ Tile.prototype.Flip = function() {
         $("#" + this._tileId).css("background-position", this._theme.GetOffset(this._value));
         $("#" + this._tileId).css("transform", "rotateY(180deg) scaleX(-1)");
         $("#" + this._tileId).css("background-color", "#e6e6e6");
+
     }
     else {
         $("#" + this._tileId).css("background-position", "0px 0px");
@@ -71,6 +84,8 @@ Tile.prototype.Flip = function() {
 Tile.prototype.Complete = function () {
     this._complete = true;
     $("#" + this._tileId).css("opacity", "0");
+    $("#" + this._tileId).css("left", -window.outerWidth + "px");
+    $("#" + this._tileId).css("top", window.outerHeight + "px");
 };
 
 /**

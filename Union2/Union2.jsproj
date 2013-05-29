@@ -87,6 +87,7 @@
     <Content Include="sounds\click.mp3" />
     <Content Include="sounds\complete.mp3" />
     <Content Include="sounds\menu.mp3" />
+    <Content Include="sounds\music.mp3" />
     <None Include="Union2_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

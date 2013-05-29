@@ -11,7 +11,7 @@
     transition: transform 0.2s linear, 
                 background-position 0s linear 0.1s,
                 background-color 0s linear 0.1s,
-                opacity 0.2s ease-in 0.5s;
+                opacity 0.2s linear 0.5s;
 }
 
 #gameContainer

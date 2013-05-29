@@ -141,7 +141,7 @@
                     if (i - 1 < mediumGameScores.length) {
                         var x = document.createElement("div");
                         x.className = "score";
-                        $(x).html(i + ". " + "Cleared - " + mediumGameScores[i - 1].timeElapsed + " sec (" + mediumGameScores[i - 1].numberOfMoves + " moves)")
+                        $(x).html("Cleared - " + mediumGameScores[i - 1].timeElapsed + " sec (" + mediumGameScores[i - 1].numberOfMoves + " moves)")
                             .appendTo("#mediumScoreboard");
 
                         // Check to see if the current date matches the latestGameDate.  If so, add the latestScore class
@@ -150,11 +150,12 @@
                         if (tempDate.getTime() == latestGameDate.getTime())
                             $(x).addClass("latestScore");
                     }
-                        // Otherwise append an empty cell
+                    // Otherwise append an empty cell
                     else {
                         var x = document.createElement("div");
                         x.className = "score";
-                        $(x).html(i + ". ")
+                        $(x).html("&nbsp;")
+                            .addClass("emptyRow")
                             .appendTo("#mediumScoreboard");
                     }
 
@@ -168,7 +169,7 @@
                     if (i - 1 < hardGameScores.length) {
                         var x = document.createElement("div");
                         x.className = "score";
-                        $(x).html(i + ". " + "Cleared - " + hardGameScores[i - 1].timeElapsed + " sec (" + hardGameScores[i - 1].numberOfMoves + " moves)")
+                        $(x).html("Cleared - " + hardGameScores[i - 1].timeElapsed + " sec (" + hardGameScores[i - 1].numberOfMoves + " moves)")
                             .appendTo("#hardScoreboard");
 
                         // Check to see if the current date matches the latestGameDate.  If so, add the latestScore class
@@ -177,11 +178,12 @@
                         if (tempDate.getTime() == latestGameDate.getTime())
                             $(x).addClass("latestScore");
                     }
-                        // Otherwise append an empty cell
+                    // Otherwise append an empty cell
                     else {
                         var x = document.createElement("div");
                         x.className = "score";
-                        $(x).html(i + ". ")
+                        $(x).html("&nbsp;")
+                            .addClass("emptyRow")
                             .appendTo("#hardScoreboard");
                     }
 

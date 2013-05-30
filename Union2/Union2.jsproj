@@ -47,7 +47,9 @@
     <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
     <TargetPlatformVersion>8.0</TargetPlatformVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
-    <PackageCertificateKeyFile>Union2_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>Union2_StoreKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>29DE559C21E5A5C6403069F439C88F01A3CE7F98</PackageCertificateThumbprint>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="package.appxmanifest">
@@ -72,7 +74,8 @@
     <Content Include="js\Level.js" />
     <Content Include="js\navigator.js" />
     <Content Include="js\tile.js" />
-    <Content Include="lib\jquery-1.8.0.min.js" />
+    <None Include="Union2_StoreKey.pfx" />
+    <None Include="Package.StoreAssociation.xml" />
     <Content Include="lib\jquery-2.0.1.min.js" />
     <Content Include="pages\gameboard\gameboard.css" />
     <Content Include="pages\gameboard\gameboard.html" />

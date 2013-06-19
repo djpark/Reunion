@@ -72,7 +72,7 @@
 @media screen and (-ms-view-state: snapped) {
     .homepage section[role=main] {
         margin-left: 20px;
-        background-color: red;
+        
     }
 }
 

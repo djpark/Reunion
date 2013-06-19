@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-  <Identity Name="60558Lounge201.Reuion" Version="1.0.0.4" Publisher="CN=A242574E-C25A-4D04-A036-903B743F4656" />
+  <Identity Name="60558Lounge201.Reuion" Version="1.0.0.5" Publisher="CN=A242574E-C25A-4D04-A036-903B743F4656" />
   <Properties>
     <DisplayName>MatchIt</DisplayName>
     <PublisherDisplayName>Lounge201</PublisherDisplayName>
